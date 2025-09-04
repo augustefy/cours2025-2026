@@ -84,14 +84,15 @@ Question courante :
 **<span style="color:#ffb74d">Sprint Planning suivant</span>** : Retour au début du cycle pour planifier le prochain sprint.
 
 ## Les Artefacts
+Légende Kanban : <span style="color:#9e9e9e">À faire</span> • <span style="color:#1e88e5">En cours</span> • <span style="color:#2e7d32">Terminé</span>
 > ### Exemple de tableau Kanban
->
+> 
 > | À faire                | En cours                | Terminé                |
 > |------------------------|-------------------------|------------------------|
 > | Rédiger la user story  | Développer la feature X | Corriger le bug Y      |
 > | Préparer la réunion    | Écrire les tests unitaires | Mettre à jour la documentation |
 > | Concevoir la maquette  |                         |                        |
->
+> 
 > Chaque colonne représente un état d’avancement des tâches. Les tâches passent de « À faire » à « En cours » puis à « Terminé » au fil du sprint.
 
 > ### Exemple de Product Backlog
@@ -132,3 +133,53 @@ Voici le déroulement typique d’un cycle Scrum, en mettant l’accent sur le r
    Le PO intègre les retours de la Sprint Review et de la Retrospective pour ajuster et enrichir le Product Backlog, préparant ainsi le prochain cycle.
 
 Ce cycle se répète à chaque sprint, permettant une amélioration continue du produit et du processus.
+
+## La User Story
+
+La **User Story** (ou « histoire utilisateur ») est un outil clé des méthodes agiles pour exprimer un besoin du point de vue de l’utilisateur. Voici les points principaux à retenir :
+
+- **Définition** :  
+  Une User Story décrit une fonctionnalité ou un besoin sous forme simple, centrée sur l’utilisateur ou le client.
+
+- **Structure type** :  
+  > <span style="color:#00897b"><strong>En tant que</strong></span> [utilisateur]  
+  > <span style="color:#3949ab"><strong>Je veux</strong></span> [action]  
+  > <span style="color:#6d4c41"><strong>Afin de</strong></span> [objectif]
+
+  *Exemple :*
+  > En tant qu’**utilisateur**,  
+  > Je veux **pouvoir réinitialiser mon mot de passe**,  
+  > Afin de **récupérer l’accès à mon compte en cas d’oubli**.
+
+- **Critères INVEST** :  
+  Une bonne User Story doit être :
+  - <span style="color:#2962ff"><strong>I</strong></span>ndépendante
+  - <span style="color:#00acc1"><strong>N</strong></span>égociable
+  - <span style="color:#2e7d32"><strong>V</strong></span>aleur métier claire
+  - <span style="color:#f9a825"><strong>E</strong></span>stimable
+  - <span style="color:#8e24aa"><strong>S</strong></span>imple (petite)
+  - <span style="color:#e53935"><strong>T</strong></span>estable
+
+- **Critères d’acceptation** :  
+  Chaque User Story doit être accompagnée de critères d’acceptation précis, qui définissent quand la story est considérée comme terminée.
+
+  *Exemple :*
+  - ✅ <span style="color:#2e7d32">L’utilisateur reçoit un email de réinitialisation.</span>
+  - ✅ <span style="color:#2e7d32">Le lien de réinitialisation expire après 24h.</span>
+  - ⚠️ <span style="color:#c62828">Un message d’erreur s’affiche si l’email n’est pas reconnu.</span>
+
+- **Avantages** :  
+  - Favorise la communication et la compréhension des besoins.
+  - Permet de prioriser et d’estimer facilement les tâches.
+  - Facilite l’adaptation aux changements.
+
+- **Bonnes pratiques** :  
+  - Rédiger les User Stories en collaboration avec l’équipe et le Product Owner.
+  - Ajouter des exemples et des critères d’acceptation clairs.
+  - Découper les stories trop grandes en stories plus petites.
+
+En résumé, la User Story est un outil simple et puissant pour exprimer les besoins fonctionnels, guider le développement et assurer la satisfaction des utilisateurs.
+
+###  Epic Story 
+
+Une **Epic Story** (ou simplement « Epic ») est une User Story de grande taille, souvent trop vaste pour être réalisée en un seul sprint. Elle regroupe plusieurs User Stories plus petites et permet de structurer des besoins complexes ou des fonctionnalités majeures. Les Epics sont découpées progressivement en stories plus détaillées au fil de l’avancement du projet.

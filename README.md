@@ -1,6 +1,13 @@
 Cours 2025–2026 (Markdown)
 ===========================
 
+[![Statut](https://img.shields.io/badge/statut-en%20cours-1e90ff?style=for-the-badge)](#)
+[![Année](https://img.shields.io/badge/année-2025–2026-2ecc71?style=for-the-badge)](#)
+[![Format](https://img.shields.io/badge/format-Markdown-f39c12?style=for-the-badge)](#)
+[![Langue](https://img.shields.io/badge/langue-Français-9b59b6?style=for-the-badge)](#)
+
+---
+
 Ce dépôt contient mes notes de cours, exercices et supports divers pour l'année 2025–2026, rédigés en Markdown. Il sera mis à jour régulièrement. Les contributions (corrections, ajouts, propositions d'exercices) sont les bienvenues via issues et pull requests.
 
 Structure du dépôt
