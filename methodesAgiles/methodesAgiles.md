@@ -105,3 +105,30 @@ Question courante :
 > | 5        | Administrateur | Visualisation de la liste des utilisateurs     | 3                   | À faire  |
 >
 >L'estimation en points correspond au niveau de difficulté estimé  par l'équipe pour une tache donné (définit par exemple avec me scrum poker)
+
+
+## Déroulement d'un cycle scrum 
+Voici le déroulement typique d’un cycle Scrum, en mettant l’accent sur le rôle du Product Owner (PO) qui rédige et priorise le Product Backlog :
+
+1. **Rédaction et priorisation du Product Backlog**  
+   Le Product Owner (PO) recueille les besoins des parties prenantes et rédige les user stories dans le Product Backlog. Il les priorise en fonction de la valeur métier, des risques et des dépendances.
+
+2. **Sprint Planning**  
+   L’équipe Scrum (PO, Scrum Master, Développeurs) se réunit pour sélectionner les éléments du Product Backlog à réaliser pendant le sprint. Le PO explique les user stories et répond aux questions de l’équipe.
+
+3. **Déroulement du Sprint**  
+   L’équipe de développement travaille sur les tâches sélectionnées. Le PO reste disponible pour clarifier les besoins et ajuster les priorités si nécessaire.
+
+4. **Daily Meeting (Scrum quotidien)**  
+   Chaque jour, l’équipe se synchronise lors d’une courte réunion. Le PO peut y assister pour écouter les avancées et les éventuels blocages, mais il n’intervient pas dans la planification technique.
+
+5. **Sprint Review**  
+   À la fin du sprint, l’équipe présente les fonctionnalités terminées au PO et aux parties prenantes. Le PO valide ou refuse les livrables selon les critères d’acceptation.
+
+6. **Sprint Retrospective**  
+   L’équipe (avec ou sans le PO) analyse le déroulement du sprint pour identifier des axes d’amélioration.
+
+7. **Mise à jour du Product Backlog**  
+   Le PO intègre les retours de la Sprint Review et de la Retrospective pour ajuster et enrichir le Product Backlog, préparant ainsi le prochain cycle.
+
+Ce cycle se répète à chaque sprint, permettant une amélioration continue du produit et du processus.
