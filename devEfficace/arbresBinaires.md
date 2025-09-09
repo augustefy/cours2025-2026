@@ -63,6 +63,7 @@ graph LR
 - `traverse()` : parcourir tous les éléments
 
 
+
 # Arbre binaire 
 **Définition d'un arbre binaire :**
 
@@ -164,11 +165,6 @@ graph TD
     class L1,L21,S11,S2 leaf
     class depth0,depth1,hAnn note
 ```
-
-
-
-
-
 
 ## Arbre de recherche binaire (BST)
 
@@ -325,6 +321,8 @@ int main(void) {
 
 
 
+
+
 ## creerArbreVide
 
 Ces fonctions utilisent le type `TreeNode` défini plus haut.
@@ -419,5 +417,699 @@ void parcoursPostfixe(TreeNode* racine) {
 ```
 
 
+### Exemple Arbre binaire de Recherche (ABR)
 
+```mermaid
+flowchart TB
+  n8("8")
+
+  n3("3")
+  n10("10")
+
+  n1("1")
+  n6("6")
+  n14("14")
+
+  n4("4")
+  n7("7")
+  n13("13")
+
+  n8 -->|gauche| n3
+  n8 -->|droite| n10
+
+  n3 -->|gauche| n1
+  n3 -->|droite| n6
+
+  n6 -->|gauche| n4
+  n6 -->|droite| n7
+
+  n10 -->|droite| n14
+  n14 -->|gauche| n13
+```
+
+- Données insérées (dans l’ordre): 8, 3, 10, 1, 6, 14, 4, 7, 13.  
+
+- Règle d’insertion: pour chaque valeur, partir de la racine; si la valeur est strictement inférieure au nœud courant, aller à gauche, sinon aller à droite; répéter jusqu’à trouver une place vide et y créer le nœud.   
+
+- Cette procédure construit un arbre où tout sous-arbre gauche contient des valeurs < nœud, et tout sous-arbre droit des valeurs ≥ nœud.  
+
+## ABR: Insertion (en feuille) 
+
+
+L'insertion « en feuille » consiste à descendre depuis la racine en respectant l'invariant de l'ABR jusqu'à trouver un pointeur `NULL`, puis à y raccrocher le nouveau nœud.
+
+- Règle: si la clé à insérer est < clé du nœud courant, aller à gauche, sinon aller à droite.
+- Arrêt: dès qu'on rencontre un pointeur `NULL` (emplacement vide), on crée le nœud et on le place ici.
+- Doublons: souvent ignorés (aucune insertion si la clé existe déjà).
+
+Complexité: O(h), où h est la hauteur de l'arbre. Équilibré: O(log n). Dégénéré: O(n).
+
+```c
+// Variante itérative (insertion en feuille)
+TreeNode* bst_insert_iter(TreeNode* root, int key) {
+    TreeNode* parent = NULL;
+    TreeNode* cur = root;
+    // Chercher l'emplacement (feuille) où insérer
+    while (cur != NULL) {
+        parent = cur;
+        if (key < cur->key) cur = cur->left;
+        else if (key > cur->key) cur = cur->right;
+        else return root; // doublon: ne rien faire
+    }
+    // Créer le nouveau nœud
+    TreeNode* node = create_node(key);
+    if (parent == NULL) return node; // arbre initialement vide
+    if (key < parent->key) parent->left = node; else parent->right = node;
+    return root;
+}
+```
+
+### Schémas Mermaid: insertion en feuille pas à pas
+
+1) Départ (arbre vide) → insérer 8
+
+```mermaid
+flowchart TB
+    N8("8 (racine)")
+
+    style N8 fill:#ffecb3,stroke:#f9a825,stroke-width:2px
+```
+
+2) Insérer 3 (3 < 8 → gauche)
+
+```mermaid
+flowchart TB
+    N8("8")
+    N3("3")
+
+    N8 -->|gauche| N3
+
+    style N8 fill:#ffecb3,stroke:#f9a825,stroke-width:2px
+    classDef left fill:#bbdefb,stroke:#1e88e5
+    class N3 left
+```
+
+3) Insérer 6 (6 < 8 → gauche; 6 > 3 → droite)
+
+```mermaid
+flowchart TB
+    N8("8")
+    N3("3")
+    N6("6")
+
+    N8 -->|gauche| N3
+    N3 -->|droite| N6
+
+    style N8 fill:#ffecb3,stroke:#f9a825,stroke-width:2px
+    classDef left fill:#bbdefb,stroke:#1e88e5
+    classDef right fill:#ffcdd2,stroke:#e53935
+    class N3 left
+    class N6 right
+```
+
+4) Insérer 5 (chemin: 5 < 8 → G; 5 > 3 → D; 5 < 6 → G)
+
+```mermaid
+flowchart TB
+    N8("8")
+    N3("3")
+    N6("6")
+    N5("5 (nouveau)")
+
+    N8 -->|gauche| N3
+    N3 -->|droite| N6
+    N6 -->|gauche| N5
+
+    %% Chemin suivi (annotations)
+    C1("5 < 8") --- N8
+    C2("5 > 3") --- N3
+    C3("5 < 6") --- N6
+
+    style N8 fill:#ffecb3,stroke:#f9a825,stroke-width:2px
+    classDef left fill:#bbdefb,stroke:#1e88e5
+    classDef right fill:#ffcdd2,stroke:#e53935
+    classDef new fill:#c8e6c9,stroke:#2e7d32
+    class N3 left
+    class N6 right
+    class N5 new
+```
+
+
+5) Insérer 2 (chemin: 2 < 8 → G; 2 < 3 → G)
+
+```mermaid
+flowchart TB
+    N3("3")
+    N8("8")
+    N2("2 (nouveau)")
+    N6("6")
+    N5("5")
+
+    N8 -->|gauche| N3
+    N3 -->|gauche| N2
+    N3 -->|droite| N6
+    N6 -->|gauche| N5
+
+    %% Chemin suivi (annotations)
+    C1("2 < 8") --- N8
+    C2("2 < 3") --- N3
+
+    style N8 fill:#ffecb3,stroke:#f9a825,stroke-width:2px
+    classDef left fill:#bbdefb,stroke:#1e88e5
+    classDef right fill:#ffcdd2,stroke:#e53935
+    classDef new fill:#c8e6c9,stroke:#2e7d32
+    class N3 left
+    class N6 right
+    class N5 right
+    class N2 new
+```
+
+6) Insérer 10 (chemin: 10 > 8 → D)
+
+```mermaid
+flowchart TB
+    N3("3")
+    N8("8")
+    N10("10 (nouveau)")
+    N2("2")
+    N6("6")
+    N5("5")
+
+    N8 -->|gauche| N3
+    N8 -->|droite| N10
+    N3 -->|gauche| N2
+    N3 -->|droite| N6
+    N6 -->|gauche| N5
+
+    %% Chemin suivi (annotations)
+    C1("10 > 8") --- N8
+
+    style N8 fill:#ffecb3,stroke:#f9a825,stroke-width:2px
+    classDef left fill:#bbdefb,stroke:#1e88e5
+    classDef right fill:#ffcdd2,stroke:#e53935
+    classDef new fill:#c8e6c9,stroke:#2e7d32
+    class N3 left
+    class N6 right
+    class N5 right
+    class N2 left
+    class N10 new
+```
+
+#### Fonction d'ajout en feuille (C)
+
+```c
+// Insère la clé 'cle' en feuille dans un ABR.
+// - Retourne la nouvelle racine (inchangée sauf si l'arbre était vide)
+// - Doublons ignorés (aucune insertion si 'cle' existe déjà)
+TreeNode* ajouterEnFeuille(TreeNode* racine, int cle) {
+    TreeNode* parent = NULL;
+    TreeNode* courant = racine;
+
+    // Descente jusqu'à trouver un emplacement NULL
+    while (courant != NULL) {
+        parent = courant;
+        if (cle < courant->key) {
+            courant = courant->left;
+        } else if (cle > courant->key) {
+            courant = courant->right;
+        } else {
+            return racine; // doublon
+        }
+    }
+
+    // Crée le nouveau nœud et l'accroche au parent
+    TreeNode* noeud = create_node(cle);
+    if (parent == NULL) {
+        // Arbre initialement vide
+        return noeud;
+    }
+    if (cle < parent->key) parent->left = noeud; else parent->right = noeud;
+    return racine;
+}
+```
+
+
+
+## ABR: Suppression (pas à pas)
+
+La suppression d'une clé `k` dans un ABR suit 3 cas:
+- Cas 1: `k` est une feuille → on supprime simplement le nœud.
+- Cas 2: `k` a un seul enfant → on « raccroche » l'enfant au parent (bypass).
+- Cas 3: `k` a deux enfants → on remplace la clé par celle de son successeur (min du sous-arbre droit), puis on supprime le successeur.
+
+On part de la forme générale construite plus haut: {8, 3, 10, 2, 6, 5}.
+
+1) Supprimer 5 (feuille)
+
+```mermaid
+flowchart TB
+    N8("8")
+    N3("3")
+    N10("10")
+    N2("2")
+    N6("6")
+    N5("5 (feuille)")
+
+    N8 -->|gauche| N3
+    N8 -->|droite| N10
+    N3 -->|gauche| N2
+    N3 -->|droite| N6
+    N6 -->|gauche| N5
+
+    %% Chemin (recherche 5)
+    C1("5 < 8") --- N8
+    C2("5 > 3") --- N3
+    C3("5 < 6") --- N6
+
+    classDef left fill:#bbdefb,stroke:#1e88e5
+    classDef right fill:#ffcdd2,stroke:#e53935
+    classDef root fill:#ffecb3,stroke:#f9a825,stroke-width:2px
+    classDef del fill:#ffe0e0,stroke:#c62828,stroke-dasharray: 5 3
+    class N3 left
+    class N6 right
+    class N2 left
+    class N10 right
+    class N8 root
+    class N5 del
+```
+
+Résultat: on enlève `5`, `6` devient feuille.
+
+2) Supprimer 6 (un seul enfant)
+
+```mermaid
+flowchart TB
+    N8("8")
+    N3("3")
+    N10("10")
+    N2("2")
+    N6("6 (à supprimer)")
+    N5("5 (enfant)")
+
+    N8 -->|gauche| N3
+    N8 -->|droite| N10
+    N3 -->|gauche| N2
+    N3 -->|droite| N6
+    N6 -->|gauche| N5
+
+    %% Chemin (recherche 6)
+    C1("6 < 8") --- N8
+    C2("6 > 3") --- N3
+
+    classDef left fill:#bbdefb,stroke:#1e88e5
+    classDef right fill:#ffcdd2,stroke:#e53935
+    classDef root fill:#ffecb3,stroke:#f9a825,stroke-width:2px
+    classDef bypass fill:#c8e6c9,stroke:#2e7d32
+    classDef del fill:#ffe0e0,stroke:#c62828,stroke-dasharray: 5 3
+    class N3 left
+    class N2 left
+    class N10 right
+    class N8 root
+    class N6 del
+    class N5 bypass
+```
+
+Résultat: on bypasse `6` et on raccorde `5` comme enfant droit de `3`.
+
+3) Supprimer 8 (deux enfants) → remplacer par le successeur (min du sous-arbre droit)
+
+```mermaid
+flowchart TB
+    N8("8 (à remplacer)")
+    N3("3")
+    N10("10 (successeur)")
+    N2("2")
+    N6("6")
+    N5("5")
+
+    N8 -->|gauche| N3
+    N8 -->|droite| N10
+    N3 -->|gauche| N2
+    N3 -->|droite| N6
+    N6 -->|gauche| N5
+
+    %% Étapes: successeur = min(sous-arbre droit) = 10, copier 10 dans 8, puis supprimer 10
+    S1("successeur = min(droit) = 10") --- N10
+
+    classDef left fill:#bbdefb,stroke:#1e88e5
+    classDef right fill:#ffcdd2,stroke:#e53935
+    classDef root fill:#ffecb3,stroke:#f9a825,stroke-width:2px
+    classDef newroot fill:#fff59d,stroke:#f9a825,stroke-width:2px
+    classDef del fill:#ffe0e0,stroke:#c62828,stroke-dasharray: 5 3
+    class N3 left
+    class N2 left
+    class N6 right
+    class N5 right
+    class N10 del
+    class N8 newroot
+```
+
+Résultat: la clé de `8` est remplacée par `10`, puis le nœud `10` du sous-arbre droit est supprimé.
+
+
+## Arbres AVL
+
+Un arbre AVL est un ABR auto-équilibré: pour tout nœud, la différence de hauteur entre le sous-arbre gauche et le sous-arbre droit (facteur d’équilibre `FE = h(gauche) - h(droit)`) est toujours dans {−1, 0, +1}.
+
+- Recherche/Insertion/Suppression: O(log n) grâce à l’équilibrage.
+- Ré-équilibrage par rotations: simple droite (RR), simple gauche (LL), double gauche-droite (LR), double droite-gauche (RL).
+
+### Schéma d’un AVL équilibré
+
+```mermaid
+flowchart TD
+    A(("30"))
+    B(("20"))
+    C(("40"))
+    D(("10"))
+    E(("25"))
+    F(("35"))
+    G(("50"))
+
+    A --> B
+    A --> C
+    B --> D
+    B --> E
+    C --> F
+    C --> G
+
+    %% Annotations de FE (facteur d'équilibre)
+    FE_A["FE(30)=0"] --- A
+    FE_B["FE(20)=0"] --- B
+    FE_C["FE(40)=0"] --- C
+
+    classDef root fill:#ffecb3,stroke:#f9a825,stroke-width:2px
+    classDef balanced fill:#c8e6c9,stroke:#2e7d32
+    class A root
+    class B,C,D,E,F,G balanced
+```
+
+Exigence AVL: après chaque insertion/suppression, on met à jour les hauteurs, calcule `FE`, et si `|FE| > 1`, on applique la rotation appropriée (LL, RR, LR, RL) au premier nœud déséquilibré rencontré en remontant.
+
+#### AVL : Rotation 
+
+#### AVL hauteur de noeud
+
+Aprés une insertion ou une suppression, l'AVL obtenu est équilibré oupas 4 cas de déséquilibré exista,t 
+En ca de déséquilibre, L'AVL peu tetre rééquilibrer enutilisant une ou deux rotation 
+
+##### Code C pour AVL (hauteur, FE, rotations, insertion, suppression)
+
+```c
+// Hauteur d'un nœud (NULL = -1)
+static int height(TreeNode* n) {
+    if (n == NULL) return -1;
+    int hg = height(n->left);
+    int hd = height(n->right);
+    return (hg > hd ? hg : hd) + 1;
+}
+
+// Facteur d'équilibre
+static int getBalance(TreeNode* n) {
+    if (n == NULL) return 0;
+    return height(n->left) - height(n->right);
+}
+
+// Rotation droite (RR)
+static TreeNode* rotateRight(TreeNode* z) {
+    TreeNode* y = z->left;
+    TreeNode* T2 = y->right;
+    y->right = z;
+    z->left = T2;
+    return y; // nouvelle racine du sous-arbre
+}
+
+// Rotation gauche (LL)
+static TreeNode* rotateLeft(TreeNode* z) {
+    TreeNode* y = z->right;
+    TreeNode* T2 = y->left;
+    y->left = z;
+    z->right = T2;
+    return y; // nouvelle racine du sous-arbre
+}
+
+// Rééquilibre un nœud n après insertion/suppression
+static TreeNode* rebalance(TreeNode* n) {
+    int balance = getBalance(n);
+    if (balance > 1) {
+        // surpoids à gauche
+        if (getBalance(n->left) < 0) {
+            n->left = rotateLeft(n->left); // cas LR
+        }
+        return rotateRight(n); // cas LL
+    } else if (balance < -1) {
+        // surpoids à droite
+        if (getBalance(n->right) > 0) {
+            n->right = rotateRight(n->right); // cas RL
+        }
+        return rotateLeft(n); // cas RR
+    }
+    return n; // déjà équilibré
+}
+
+TreeNode* avl_insert(TreeNode* root, int key) {
+    if (root == NULL) return create_node(key);
+    if (key < root->key) root->left = avl_insert(root->left, key);
+    else if (key > root->key) root->right = avl_insert(root->right, key);
+    else return root; // doublon ignoré
+    return rebalance(root);
+}
+
+static TreeNode* findMin(TreeNode* n) {
+    while (n && n->left) n = n->left;
+    return n;
+}
+
+TreeNode* avl_delete(TreeNode* root, int key) {
+    if (root == NULL) return NULL;
+    if (key < root->key) root->left = avl_delete(root->left, key);
+    else if (key > root->key) root->right = avl_delete(root->right, key);
+    else {
+        // suppression du nœud root
+        if (root->left == NULL || root->right == NULL) {
+            TreeNode* child = root->left ? root->left : root->right;
+            if (child == NULL) {
+                // pas d'enfant
+                free(root);
+                return NULL;
+            } else {
+                // un enfant
+                TreeNode* tmp = child;
+                free(root);
+                return tmp;
+            }
+        } else {
+            // deux enfants: successeur
+            TreeNode* succ = findMin(root->right);
+            root->key = succ->key;
+            root->right = avl_delete(root->right, succ->key);
+        }
+    }
+    // rééquilibrer en remontant
+    return rebalance(root);
+}
+```
+
+##### Suppression en AVL (pas à pas, avec rééquilibrage)
+
+Exemple: depuis l’AVL précédent, supprimer 10 puis 40 pour provoquer un cas RR au nœud 25.
+
+1) Avant suppression
+
+```mermaid
+flowchart TD
+    N25(("25"))
+    N20(("20"))
+    N30(("30"))
+    N10(("10"))
+    N22(("22"))
+    N40(("40"))
+
+    N25 --> N20
+    N25 --> N30
+    N20 --> N10
+    N20 --> N22
+    N30 --> N40
+```
+
+2) Supprimer 40 (feuille)
+
+```mermaid
+flowchart TD
+    N25(("25"))
+    N20(("20"))
+    N30(("30"))
+    N10(("10"))
+    N22(("22"))
+
+    N25 --> N20
+    N25 --> N30
+    N20 --> N10
+    N20 --> N22
+
+    FE25["FE(25)=+2 (RR)"] --- N25
+```
+
+3) Rééquilibrage RR: rotation droite sur 25/20
+
+```mermaid
+flowchart TD
+    N20(("20"))
+    N10(("10"))
+    N25(("25"))
+    N22(("22"))
+    N30(("30"))
+
+    N20 --> N10
+    N20 --> N25
+    N25 --> N22
+    N25 --> N30
+
+    FE20["FE(20)=0"] --- N20
+```
+
+##### Insertion en AVL (pas à pas, avec rééquilibrage)
+
+Exemple: insertion dans l’ordre 30, 20, 40, 10, 25, 22 provoque un cas LR au nœud 30.
+
+1) Avant déséquilibre
+
+```mermaid
+flowchart TD
+    N30(("30"))
+    N20(("20"))
+    N40(("40"))
+    N10(("10"))
+    N25(("25"))
+    N22(("22 (nouveau)"))
+
+    N30 --> N20
+    N30 --> N40
+    N20 --> N10
+    N20 --> N25
+    N25 --> N22
+
+    FE30["FE(30)=+2 (LR)"] --- N30
+```
+
+2) Rééquilibrage LR: rotation gauche sur 20/25 puis rotation droite sur 30/25
+
+```mermaid
+flowchart TD
+    N25(("25"))
+    N20(("20"))
+    N30(("30"))
+    N10(("10"))
+    N22(("22"))
+    N40(("40"))
+
+    N25 --> N20
+    N25 --> N30
+    N20 --> N10
+    N20 --> N22
+    N30 --> N40
+
+    FE25["FE(25)=0"] --- N25
+```
+##### Hauteur et facteur d’équilibre (FE)
+
+- Hauteur d’un nœud: longueur du plus long chemin vers une feuille. Convention: `h(NULL) = -1`.
+- Facteur d’équilibre: `FE(n) = h(n.gauche) - h(n.droit)`.
+- Propriété AVL: pour tout nœud `n`, `FE(n) ∈ { -1, 0, +1 }`.
+
+Mise à jour après insertion/suppression: en remontant depuis le nœud modifié, on met à jour `h(n)` et `FE(n)`, et si `|FE(n)| > 1`, on applique une rotation adaptée.
+
+##### Rotations AVL (schémas)
+
+1) Rotation simple droite (RR) — déséquilibre Gauche-Gauche
+
+```mermaid
+flowchart LR
+    subgraph Avant
+      direction TB
+      Z(("Z"))
+      Y(("Y"))
+      X(("X"))
+      Z --> Y
+      Y --> X
+    end
+    
+    subgraph Après
+      direction TB
+      Y2(("Y"))
+      X2(("X"))
+      Z2(("Z"))
+      Y2 --> X2
+      Y2 --> Z2
+    end
+```
+
+2) Rotation simple gauche (LL) — déséquilibre Droite-Droite
+
+```mermaid
+flowchart LR
+    subgraph Avant
+      direction TB
+      Z(("Z"))
+      Y(("Y"))
+      X(("X"))
+      Z --> Y
+      Y --> X
+    end
+    
+    subgraph Après
+      direction TB
+      Y2(("Y"))
+      Z2(("Z"))
+      X2(("X"))
+      Y2 --> Z2
+      Y2 --> X2
+    end
+```
+
+3) Rotation double gauche-droite (LR) — déséquilibre Gauche-Droite
+
+```mermaid
+flowchart LR
+    subgraph Avant
+      direction TB
+      Z(("Z"))
+      Y(("Y"))
+      X(("X"))
+      Z --> Y
+      Y --> X
+    end
+    
+    subgraph Après
+      direction TB
+      X2(("X"))
+      Y2(("Y"))
+      Z2(("Z"))
+      X2 --> Y2
+      X2 --> Z2
+    end
+```
+
+4) Rotation double droite-gauche (RL) — déséquilibre Droite-Gauche
+
+```mermaid
+flowchart LR
+    subgraph Avant
+      direction TB
+      Z(("Z"))
+      Y(("Y"))
+      X(("X"))
+      Z --> Y
+      Y --> X
+    end
+    
+    subgraph Après
+      direction TB
+      X2(("X"))
+      Z2(("Z"))
+      Y2(("Y"))
+      X2 --> Z2
+      X2 --> Y2
+    end
+```
 
