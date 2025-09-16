@@ -1113,3 +1113,72 @@ flowchart LR
     end
 ```
 
+# GRATHE 
+
+
+## La structure 
+ 
+```c 
+typedef struct CellSommet{
+    TypeVal num; 
+    struct CellSommet *suiv;
+    struct CellArc *listArcs;
+}Sommet; 
+
+typedef struct CellArc {
+    Sommet *extremite;
+    struct CellArc *suivant;
+}Arc;
+
+typedef Sommet * Graphe;
+```c
+Sommet* rechPtSurSommet(Graphe R, int num) {
+    Sommet* p = R;
+    while (p != NULL) {
+        if (p->num == num) return p;
+        p = p->suiv;
+    }
+    return NULL;
+}
+```
+
+
+```c
+CodeRetour ajouterSommet(Graphe *ptg, int num){
+    if (ptg == NULL) return PB_GRAPHE; 
+    if (rechercherSommet(*ptg, num) == VRAI) return PB_SOMMET_DEJA_EXISTANT;
+
+    Sommet *nv = (Sommet*)malloc(sizeof(Sommet));
+    if (nv == NULL) return PB_MEMOIRE;
+    nv->num = num;
+    nv->listArcs = NULL;
+    nv->suiv = *ptg; 
+    *ptg = nv;
+    return OK;
+}```
+
+```c 
+CodeRetour ajouterArc(Graphe h, int dep, int arr){
+    if (h == NULL) return PB_GRAPHE;
+    Sommet* sDep = rechPtSurSommet(h, dep);
+    Sommet* sArr = rechPtSurSommet(h, arr);
+    if (sDep == NULL || sArr == NULL) return PB_SOMMET_INTROUVABLE;
+
+    // Vérifier si l'arc existe déjà (dep -> arr)
+    Arc* cur = sDep->listArcs;
+    while (cur != NULL) {
+        if (cur->extremite == sArr || cur->extremite->num == arr) {
+            return PB_ARC_DEJA_EXISTANT;
+        }
+        cur = cur->suivant;
+    }
+
+    // Créer et insérer l'arc en tête de la liste des arcs sortants de dep
+    Arc* nv = (Arc*)malloc(sizeof(Arc));
+    if (nv == NULL) return PB_MEMOIRE;
+    nv->extremite = sArr;
+    nv->suivant = sDep->listArcs;
+    sDep->listArcs = nv;
+
+    return OK;
+}
