@@ -25,3 +25,7 @@ Tenue des registre :
 #### Droits à la portabilité 
 
 >Le droit à la portabilité permet à toute personne de récupérer les données personnelles qu'elle a fournies à un organisme (entreprise, administration, etc.) dans un format structuré, couramment utilisé et lisible par machine. Elle peut ainsi les transmettre facilement à un autre organisme si elle le souhaite. Ce droit vise à renforcer le contrôle des individus sur leurs données et à faciliter le changement de service (par exemple, changer de fournisseur d'accès ou de réseau social). Il s'applique uniquement aux données fournies par la personne concernée, sur la base de son consentement ou d'un contrat, et traitées de manière automatisée.
+
+### Parcours en profondeurs 
+
+-on va plus loin possible de la direction

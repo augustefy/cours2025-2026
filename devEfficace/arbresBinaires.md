@@ -1113,16 +1113,17 @@ flowchart LR
     end
 ```
 
-# GRATHE 
+# Graphe
 
 
-## La structure 
+### La structure 
  
 ```c 
 typedef struct CellSommet{
     TypeVal num; 
     struct CellSommet *suiv;
     struct CellArc *listArcs;
+    Booleen Marque;  // pour les parcours 
 }Sommet; 
 
 typedef struct CellArc {
@@ -1131,6 +1132,7 @@ typedef struct CellArc {
 }Arc;
 
 typedef Sommet * Graphe;
+```
 ```c
 Sommet* rechPtSurSommet(Graphe R, int num) {
     Sommet* p = R;
@@ -1181,4 +1183,75 @@ CodeRetour ajouterArc(Graphe h, int dep, int arr){
     sDep->listArcs = nv;
 
     return OK;
+```
+
+### Parcours en profondeurs 
+
+-on va plus loin possible de la direction
+
+
+```c
+
+Booleen existeCheminPt(Sommet *sa, Sommet *sd) {
+    //un poiteur sur arc je l'appel tmp 
+    Arc* tmp;
+    if (sa == NULL || sd == NULL) return FAUX;
+    if (sa == sd) return VRAI;
+
+    tmp = sa->listArcs;
+    while(tmp != NULL){
+        if (tmp->extremite->marque = FAUX){
+            if(existeCheminPt(tmp->extremite, sa){
+                return VRAI;
+            })
+        }
+        tmp = tmp->suivant
+    }
+    return FAUX
 }
+
+void parcoursProfondeur(Sommet* courant) {
+    if (courant == NULL) return;
+    courant->marque = VRAI;
+    printf("Sommet %d\n", courant->num);
+
+    Arc* arc = courant->listArcs;
+    while (arc != NULL) {
+        if (arc->extremite->marque == FAUX) {
+            parcoursProfondeur(arc->extremite);
+        }
+        arc = arc->suivant;
+    }
+}
+
+```c
+
+void parcoursLargeur(Sommet* depart) {
+    if (depart == NULL) return;
+
+    Sommet* file[100];
+    int debut = 0, fin = 0;
+
+    depart->marque = VRAI;
+    file[fin++] = depart;
+
+    while (debut < fin) {
+        Sommet* courant = file[debut++];
+        printf("Sommet %d\n", courant->num);
+
+        Arc* arc = courant->listArcs;
+        while (arc != NULL) {
+            if (arc->extremite->marque == FAUX) {
+                arc->extremite->marque = VRAI;
+                file[fin++] = arc->extremite;
+            }
+            arc = arc->suivant;
+        }
+    }
+}
+
+```
+
+
+
+
