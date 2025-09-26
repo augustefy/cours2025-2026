@@ -183,3 +183,16 @@ En résumé, la User Story est un outil simple et puissant pour exprimer les bes
 ###  Epic Story 
 
 Une **Epic Story** (ou simplement « Epic ») est une User Story de grande taille, souvent trop vaste pour être réalisée en un seul sprint. Elle regroupe plusieurs User Stories plus petites et permet de structurer des besoins complexes ou des fonctionnalités majeures. Les Epics sont découpées progressivement en stories plus détaillées au fil de l’avancement du projet.
+
+### Rétropective de sprint 
+
+Afin de mener à bien la rétrospective de sprint, il existe plusieurs méthodes, dont :
+
+- la méthode <span style="color:#fbc02d"><strong>Keep Drop Start</strong></span> :  
+  Cette méthode consiste à structurer la rétrospective autour de trois axes :
+  - <span style="color:#2e7d32"><strong>Keep</strong></span> : Identifier ce que l’équipe souhaite conserver, c’est-à-dire les pratiques ou éléments qui ont bien fonctionné durant le sprint.
+  - <span style="color:#e53935"><strong>Drop</strong></span> : Déterminer ce qu’il faut arrêter de faire, c’est-à-dire les actions, comportements ou processus qui n’ont pas apporté de valeur ou ont posé problème.
+  - <span style="color:#1976d2"><strong>Start</strong></span> : Proposer de nouvelles actions ou expérimentations à mettre en place pour améliorer le prochain sprint.
+
+  Cette approche simple et visuelle favorise la participation de tous et permet de cibler rapidement les axes d’amélioration. Pour les actions a mener il est nécessaire d'attibuer 3 points à chacun. Les post it avec le plus de point sont retenus.
+  
