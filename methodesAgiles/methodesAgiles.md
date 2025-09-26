@@ -195,4 +195,124 @@ Afin de mener à bien la rétrospective de sprint, il existe plusieurs méthodes
   - <span style="color:#1976d2"><strong>Start</strong></span> : Proposer de nouvelles actions ou expérimentations à mettre en place pour améliorer le prochain sprint.
 
   Cette approche simple et visuelle favorise la participation de tous et permet de cibler rapidement les axes d’amélioration. Pour les actions a mener il est nécessaire d'attibuer 3 points à chacun. Les post it avec le plus de point sont retenus.
+
+- la méthode <span style="color:#7b1fa2"><strong>Variante</strong></span> :  
+  Cette méthode propose d’aborder la rétrospective à travers plusieurs axes originaux et complémentaires :
+
+  - <span style="color:#2e7d32"><strong>✅ Qu’est-ce qui a bien marché ?</strong></span>  
+    Identifier les points positifs et les succès du sprint.
+
+  - <span style="color:#1976d2"><strong>🔜 Que faut-il faire lors du prochain sprint ?</strong></span>  
+    Définir les actions à entreprendre ou à améliorer pour la prochaine itération.
+
+  - <span style="color:#fbc02d"><strong>💡 Qu’ai-je appris ?</strong></span>  
+    Partager les apprentissages, découvertes ou nouvelles compétences acquises.
+
+  - <span style="color:#e53935"><strong>❓ Qu’est-ce qui est mal compris ou doit être clarifié pour la suite ?</strong></span>  
+    Mettre en avant les zones d’ombre, incompréhensions ou points à éclaircir.
+
+  - <span style="color:#ff7043"><strong>😤 Qu’est-ce qui m’a rendu fou ?</strong></span>  
+    Exprimer les frustrations, irritations ou obstacles rencontrés.
+
+  - <span style="color:#00acc1"><strong>😂 Qu’est-ce qui m’a fait rire ?</strong></span>  
+    Partager les moments de bonne humeur ou anecdotes amusantes du sprint.
+
+  Cette variante permet d’aborder la rétrospective de façon plus humaine et ludique, tout en favorisant l’expression de chacun et la cohésion de l’équipe.
+
+  On peut également poursuivre avec la méthode en étoile, qui consiste à organiser la rétrospective autour de catégories disposées en étoile, telles que :
+   - Continuer à ...
+   - Faire plus de ...
+   - Commencer à ...
+   - Faire moins de ...
+   - Arrêter de ...
+
+  Cette présentation visuelle facilite la réflexion collective et permet à chaque membre de l’équipe de s’exprimer sur différents axes d’amélioration.
+
+### Les contradictions 
+- <span style="color:#1976d2"><strong>Contrat simple en agile</strong></span>  
+  <span style="color:#2e7d32"><strong>Pour :</strong></span>
+  - <span style="color:#388e3c">Grande flexibilité pour adapter le périmètre en fonction des besoins réels du client.</span>
+  - <span style="color:#388e3c">Favorise la collaboration et la confiance entre l’équipe et le client.</span>
+  - <span style="color:#388e3c">Permet d’intégrer facilement les retours et changements en cours de projet.</span>
+  - <span style="color:#388e3c">Encourage la transparence et l’amélioration continue.</span>
   
+  <span style="color:#e53935"><strong>Contre :</strong></span>
+  - <span style="color:#d32f2f">Difficulté à estimer précisément le budget et la durée du projet.</span>
+  - <span style="color:#d32f2f">Risque de dérive du périmètre si les attentes ne sont pas bien cadrées.</span>
+  - <span style="color:#d32f2f">Peut générer de l’incertitude pour le client sur le résultat final.</span>
+  - <span style="color:#d32f2f">Nécessite une forte implication du client tout au long du projet.</span>
+
+- <span style="color:#fbc02d"><strong>Contrat au forfait en agile</strong></span>  
+  <span style="color:#2e7d32"><strong>Pour :</strong></span>
+  - <span style="color:#388e3c">Budget, délais et périmètre définis dès le départ, ce qui rassure le client.</span>
+  - <span style="color:#388e3c">Permet une planification plus précise des ressources et des livrables.</span>
+  - <span style="color:#388e3c">Offre un cadre contractuel clair pour les deux parties.</span>
+  - <span style="color:#388e3c">Peut convenir à des projets avec des exigences bien identifiées.</span>
+
+  <span style="color:#e53935"><strong>Contre :</strong></span>
+  - <span style="color:#d32f2f">Moins de flexibilité pour intégrer des changements en cours de route.</span>
+  - <span style="color:#d32f2f">Toute modification importante nécessite un avenant ou une renégociation.</span>
+  - <span style="color:#d32f2f">L’agilité se limite souvent à la gestion interne de l’équipe.</span>
+  - <span style="color:#d32f2f">Risque de tensions si le périmètre initial est mal défini ou sous-estimé.</span>
+- <span style="color:#00acc1"><strong>Contractualisation par sprint en agile</strong></span>  
+  <span style="color:#2e7d32"><strong>Pour :</strong></span>
+  - <span style="color:#388e3c">Permet une adaptation très fine à l’évolution des besoins à chaque itération.</span>
+  - <span style="color:#388e3c">Engagement progressif : le client ne s’engage que pour un sprint à la fois.</span>
+  - <span style="color:#388e3c">Réduit les risques financiers et fonctionnels en limitant l’investissement à court terme.</span>
+  - <span style="color:#388e3c">Favorise la transparence sur l’avancement et la valeur livrée à chaque sprint.</span>
+
+  <span style="color:#e53935"><strong>Contre :</strong></span>
+  - <span style="color:#d32f2f">Peut générer un sentiment d’incertitude sur la vision globale et la planification long terme.</span>
+  - <span style="color:#d32f2f">Nécessite une forte implication continue du client pour valider et prioriser à chaque sprint.</span>
+  - <span style="color:#d32f2f">Difficile d’obtenir des engagements fermes sur le budget total ou la date de livraison finale.</span>
+  - <span style="color:#d32f2f">Peut être perçu comme un manque d’engagement réciproque sur la durée du projet.</span>
+  ### Que faire des user stories non livrées lors d’une facturation par sprint ?
+
+  Lorsqu’on contractualise et facture au sprint, il arrive que certaines user stories prévues ne soient pas terminées à la fin de l’itération. La gestion de ces user stories non livrées doit être clarifiée dès le départ pour éviter tout malentendu entre le client et l’équipe.
+
+  **Plusieurs options existent :**
+
+  - <span style="color:#fbc02d"><strong>Refacturation au sprint suivant</strong></span>  
+    Les user stories non terminées sont reportées dans le backlog et intégrées au sprint suivant. Elles ne sont facturées que lorsqu’elles sont effectivement livrées et validées par le client.  
+    <span style="color:#388e3c">Avantage :</span> Le client ne paie que pour la valeur réellement livrée.  
+    <span style="color:#d32f2f">Inconvénient :</span> Cela peut compliquer la gestion de la facturation et du suivi.
+
+  - <span style="color:#fbc02d"><strong>Facturation du sprint tel que réalisé</strong></span>  
+    Le sprint est facturé dans son ensemble, même si toutes les user stories n’ont pas été livrées, car l’équipe a consacré le temps prévu.  
+    <span style="color:#388e3c">Avantage :</span> Simplicité de gestion et respect du cadre temporel.  
+    <span style="color:#d32f2f">Inconvénient :</span> Le client peut avoir le sentiment de payer pour des fonctionnalités non livrées.
+
+  - <span style="color:#fbc02d"><strong>Partage du risque</strong></span>  
+    Un compromis peut être trouvé : par exemple, seules les user stories terminées sont facturées, ou bien un pourcentage du sprint est retenu jusqu’à la livraison complète.  
+    <span style="color:#388e3c">Avantage :</span> Équilibre entre engagement de l’équipe et satisfaction du client.  
+    <span style="color:#d32f2f">Inconvénient :</span> Cela nécessite une négociation et une contractualisation précise.
+
+  **Qui prend en charge le coût des user stories non livrées ?**
+
+  - <span style="color:#1976d2"><strong>L’équipe (le prestataire)</strong></span> prend en charge si le retard est dû à un problème d’organisation interne, de sous-estimation ou de blocage technique non anticipé.
+  - <span style="color:#388e3c"><strong>Le client</strong></span> prend en charge si le retard est causé par un manque de disponibilité, des validations tardives ou des changements de priorités de sa part.
+  - <span style="color:#fbc02d"><strong>Cas mixte</strong></span> : souvent, la réalité est partagée et il est important de définir dans le contrat les cas de figure et la répartition des responsabilités.
+
+  > **À retenir :**  
+  <span style="color:#fbc02d"><strong>La gestion des user stories non livrées doit être anticipée dans le contrat de facturation par sprint, pour garantir la transparence et la confiance entre les parties.</strong></span>
+
+  ### Comment gérer les bugs et la non-validation des user stories
+
+  La gestion des bugs et des user stories non validées est un point clé dans un projet agile, notamment en Scrum. Voici comment cela peut être abordé :
+
+  **Bugs et defect stories :**
+  - Les bugs identifiés pendant un sprint sont généralement ajoutés au backlog sous forme de « defect stories » et priorisés selon leur impact.
+  - <span style="color:#e53935"><strong>Si un bug (décrit alors comme une defect story) bloque la livraison d’une user story, il doit être corrigé avant la validation de celle-ci.</strong></span>
+  - Les defect stories critiques peuvent être traitées immédiatement, tandis que les moins urgentes sont planifiées pour un sprint ultérieur.
+
+  **User stories non validées :**
+  - <span style="color:#e53935"><strong>Une user story non validée à la fin du sprint (car incomplète ou ne répondant pas aux critères d’acceptation) n’est pas considérée comme « terminée ».</strong></span>
+  - Elle retourne dans le backlog produit, est réévaluée et priorisée pour un prochain sprint.
+  - La non-validation peut entraîner une discussion lors de la rétrospective pour comprendre les causes (sous-estimation, blocage, manque de clarté, etc.) et améliorer le processus.
+
+  **À retenir :**
+  - <span style="color:#1976d2"><strong>La transparence et la communication avec le client sont essentielles pour gérer ces situations.</strong></span>
+  - Il est important de documenter les décisions prises et d’ajuster le contrat ou les attentes si nécessaire.
+
+
+## Les différents type de contrat en methode scrum 
