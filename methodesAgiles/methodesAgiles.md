@@ -316,3 +316,148 @@ Afin de mener à bien la rétrospective de sprint, il existe plusieurs méthodes
 
 
 ## Les différents type de contrat en methode scrum 
+
+### Contrat à coût variable (ou « Time & Material »)
+
+Dans ce type de contrat, le client s’engage à rémunérer l’équipe sur la base du <span style="color:#1976d2"><strong>temps effectivement passé</strong></span> et des <span style="color:#1976d2"><strong>ressources réellement mobilisées</strong></span>, plutôt que sur un périmètre fonctionnel figé à l’avance. L’équipe travaille pendant une période convenue (par exemple, un certain nombre de sprints ou de semaines), et le client paie pour le travail effectivement réalisé, généralement sur la base d’un tarif journalier ou horaire.
+
+**<span style="color:#fbc02d">Caractéristiques principales :</span>**
+- <span style="color:#388e3c"><strong>Flexibilité maximale</strong></span> : Le client peut ajuster les priorités, ajouter ou retirer des fonctionnalités au fil du projet, en fonction de l’avancement et des besoins réels.
+- <span style="color:#1976d2"><strong>Transparence</strong></span> : Le suivi du temps passé et des livrables est régulier, souvent via des points d’avancement ou des démonstrations à la fin de chaque sprint.
+- <span style="color:#f57c00"><strong>Engagement sur les moyens, pas sur le résultat</strong></span> : L’équipe s’engage à fournir ses efforts et son expertise, mais le périmètre exact du produit final peut évoluer.
+
+**<span style="color:#388e3c">Avantages :</span>**
+- <span style="color:#388e3c">Adapté aux projets où les besoins sont susceptibles d’évoluer ou ne sont pas totalement définis au départ.</span>
+- <span style="color:#388e3c">Permet une grande réactivité face aux changements de contexte ou de priorités.</span>
+- <span style="color:#388e3c">Favorise la collaboration et la confiance entre le client et l’équipe.</span>
+
+**<span style="color:#d32f2f">Inconvénients :</span>**
+- <span style="color:#d32f2f">Le budget final peut être difficile à anticiper pour le client, car il dépend du temps réellement consommé.</span> <span style="color:#d32f2f"><strong>→ tout le risque pour le client</strong></span>
+- <span style="color:#d32f2f">Nécessite une grande transparence et un suivi rigoureux pour éviter les dérives.</span>
+
+**<span style="color:#fbc02d">À retenir :</span>**  
+<span style="color:#1976d2"><strong>Le contrat à coût variable</strong></span> est particulièrement adapté aux environnements agiles, où l’incertitude et l’évolution des besoins font partie intégrante du projet.  
+Il repose sur la <span style="color:#388e3c"><strong>confiance</strong></span>, la <span style="color:#388e3c"><strong>communication</strong></span> et la capacité à <span style="color:#f57c00"><strong>piloter le projet en continu</strong></span>.
+
+
+### Contrat à coût fixe
+
+Dans un **contrat à coût fixe**, le client et le prestataire s’accordent dès le départ sur un **périmètre fonctionnel précis** (ensemble des fonctionnalités à livrer) et sur un **prix global** pour la réalisation de ce périmètre. Cela signifie que le montant à payer est déterminé à l’avance, indépendamment du temps ou des ressources réellement consommés pendant le projet.
+
+**<span style="color:#fbc02d">Caractéristiques principales :</span>**
+- <span style="color:#1976d2"><strong>Périmètre figé</strong></span> : Toutes les fonctionnalités à livrer sont définies en détail avant le début du projet. Toute modification du périmètre (ajout, suppression ou modification de fonctionnalités) nécessite un avenant au contrat.
+- <span style="color:#388e3c"><strong>Coût connu à l’avance</strong></span> : Le client connaît le budget total dès la signature du contrat, ce qui facilite la planification financière.
+- <span style="color:#d32f2f"><strong>Moins de flexibilité</strong></span> : Les changements en cours de projet sont difficiles à intégrer sans réévaluation du coût et du planning.
+
+**<span style="color:#388e3c">Avantages :</span>**
+- <span style="color:#388e3c">Sécurité budgétaire pour le client : le coût ne peut pas dépasser le montant convenu, sauf si le périmètre change.</span>
+- <span style="color:#388e3c">Clarté sur les livrables attendus et les délais.</span>
+
+**<span style="color:#d32f2f">Inconvénients :</span>**
+- <span style="color:#d32f2f">Manque de souplesse : toute évolution du besoin implique des négociations et des délais supplémentaires.</span>
+- <span style="color:#d32f2f">Risque de mésentente sur le périmètre : si les spécifications ne sont pas parfaitement claires, des conflits peuvent apparaître.</span>
+- <span style="color:#d32f2f">Peut générer une relation « client vs fournisseur » plutôt qu’un esprit de collaboration.</span>
+
+**<span style="color:#fbc02d">À retenir :</span>**  
+Le **contrat à coût fixe** est adapté aux projets où le **périmètre est stable et bien défini dès le départ**. Il offre une sécurité sur le coût, mais **limite la capacité à s’adapter aux changements** en cours de route.  
+Dans un contexte agile, ce type de contrat peut être difficile à appliquer, car l’agilité repose justement sur l’acceptation du changement et l’adaptation continue du produit aux besoins réels du client.  
+Pour rendre ce modèle compatible avec l’agilité, il est parfois possible de découper le projet en lots ou en phases, chacune faisant l’objet d’un mini-contrat à coût fixe, ou de prévoir des clauses d’ajustement du périmètre.
+
+
+
+### Coût fixe et périmètre fixe
+
+Dans un modèle <span style="color:#1976d2"><strong>coût fixe et périmètre fixe</strong></span>, le client et le prestataire s’engagent contractuellement sur deux éléments immuables : <span style="color:#388e3c"><strong>le prix global du projet</strong></span> et <span style="color:#388e3c"><strong>la liste exhaustive des fonctionnalités à livrer</strong></span>. Ce type de contrat est traditionnellement utilisé dans les approches classiques de gestion de projet, mais il peut aussi être adapté à certains contextes agiles, à condition d’accepter certaines contraintes.
+
+**<span style="color:#fbc02d">Principes :</span>**
+- <span style="color:#1976d2"><strong>Tout est défini à l’avance</strong></span> : le cahier des charges doit être complet, précis et validé par toutes les parties avant le lancement du projet.
+- <span style="color:#d32f2f"><strong>Aucune évolution sans avenant</strong></span> : toute modification du périmètre (ajout, retrait ou modification de fonctionnalités) nécessite une renégociation du contrat (avenant) et, souvent, une réévaluation du coût et des délais.
+- <span style="color:#388e3c"><strong>Engagement fort sur le résultat</strong></span> : le prestataire s’engage à livrer exactement ce qui a été défini, dans le budget et le délai convenus.
+
+**<span style="color:#fbc02d">Conséquences :</span>**
+- <span style="color:#388e3c"><strong>Sécurité budgétaire maximale pour le client</strong></span>, mais <span style="color:#d32f2f"><strong>peu de souplesse</strong></span> en cas de changement de besoin.
+- <span style="color:#d32f2f"><strong>Risque pour le fournisseur</strong></span> en cas de sous-estimation de la charge ou de mauvaise compréhension du besoin initial.
+- <span style="color:#d32f2f"><strong>Relation contractuelle parfois tendue</strong></span> si des imprévus apparaissent ou si le client souhaite faire évoluer le produit en cours de route.
+
+**<span style="color:#fbc02d">À retenir :</span>**  
+Le modèle <span style="color:#1976d2"><strong>coût fixe et périmètre fixe</strong></span> est rassurant pour le client sur le plan financier, mais il est <span style="color:#d32f2f"><strong>peu compatible avec l’esprit agile</strong></span>, qui valorise l’adaptation et l’amélioration continue. Il convient surtout aux projets où <span style="color:#388e3c"><strong>tout est connu et maîtrisé dès le départ</strong></span>, et où le besoin d’évolution est faible ou inexistant.
+
+### Budget par sprint
+
+Dans un modèle de **budget par sprint** (ou « paiement à l’itération »), le client s’engage à payer le prestataire à la fin de chaque sprint, c’est-à-dire à intervalles réguliers correspondant à la durée d’une itération (souvent 2 à 4 semaines). Le périmètre de chaque sprint est défini en début d’itération, en concertation avec le client, ce qui permet d’ajuster les priorités et de s’adapter aux besoins réels au fil du projet.
+
+**<span style="color:#fbc02d">Caractéristiques principales :</span>**
+- <span style="color:#1976d2"><strong>Périmètre évolutif</strong></span> : Les fonctionnalités à réaliser sont décidées sprint après sprint, en fonction de la valeur métier et du retour du client.
+- <span style="color:#388e3c"><strong>Budget maîtrisé par itération</strong></span> : Le client connaît le coût de chaque sprint à l’avance et peut décider de poursuivre, d’arrêter ou d’ajuster le projet à la fin de chaque itération.
+- <span style="color:#388e3c"><strong>Grande flexibilité</strong></span> : Le client peut modifier ses priorités ou le contenu des sprints en fonction de l’avancement et des retours utilisateurs.
+
+**<span style="color:#388e3c">Avantages :</span>**
+- <span style="color:#388e3c">Adaptation continue aux besoins réels du client.</span>
+- <span style="color:#388e3c">Visibilité régulière sur l’avancement et le budget consommé.</span>
+- <span style="color:#388e3c">Possibilité d’arrêter le projet à tout moment, sans surcoût.</span>
+
+**<span style="color:#d32f2f">Inconvénients :</span>**
+- <span style="color:#d32f2f">Moins de visibilité sur le coût total final si le nombre de sprints n’est pas fixé à l’avance.</span>
+- <span style="color:#d32f2f">Nécessite une forte implication du client tout au long du projet.</span>
+
+**<span style="color:#fbc02d">À retenir :</span>**  
+Le **budget par sprint** est particulièrement adapté aux projets agiles, où l’on souhaite maximiser la valeur livrée à chaque itération et s’adapter en continu. Ce mode de fonctionnement favorise la collaboration, la transparence et la réactivité, tout en permettant au client de garder la maîtrise de son investissement au fil du temps.
+
+### Payé pour rien, changement gratuit (« Money For Nothing, Change For Free »)
+
+Le modèle « Payé pour rien, changement gratuit » (souvent appelé « Money For Nothing, Change For Free ») est un type de contrat hybride, conçu pour concilier la flexibilité de l’agilité avec la sécurité financière pour le prestataire. Il vise à rassurer le client sur sa capacité à changer d’avis sans surcoût, tout en protégeant le fournisseur contre les interruptions brutales de projet.
+
+**<span style="color:#fbc02d">Principes :</span>**
+- <span style="color:#1976d2"><strong>Changement gratuit</strong></span> : Le client peut modifier le périmètre du projet à tout moment, sans coût additionnel, tant que le budget global n’est pas dépassé.
+- <span style="color:#388e3c"><strong>Arrêt anticipé possible</strong></span> : Si le client décide d’arrêter le projet avant la fin, il verse au prestataire une indemnité correspondant à une partie du budget restant (« payé pour rien »).
+- <span style="color:#388e3c"><strong>Engagement sur la valeur</strong></span> : Le prestataire s’engage à livrer de la valeur à chaque itération, et le client garde la liberté d’ajuster ses priorités ou d’arrêter le projet si la valeur attendue n’est plus au rendez-vous.
+
+**<span style="color:#388e3c">Avantages :</span>**
+- <span style="color:#388e3c">Grande flexibilité pour le client, qui peut changer d’avis sans pénalité.</span>
+- <span style="color:#388e3c">Sécurité pour le prestataire, qui est indemnisé en cas d’arrêt anticipé.</span>
+- <span style="color:#388e3c">Favorise la transparence et la confiance entre les parties.</span>
+
+**<span style="color:#d32f2f">Inconvénients :</span>**
+- <span style="color:#d32f2f">Nécessite une grande maturité contractuelle et relationnelle.</span>
+- <span style="color:#d32f2f">Peut être difficile à faire accepter dans certains contextes ou avec des clients peu familiers de l’agilité.</span>
+
+**<span style="color:#fbc02d">À retenir :</span>**  
+Le contrat « Payé pour rien, changement gratuit » est particulièrement adapté aux projets agiles où l’incertitude est forte et où la capacité à s’adapter rapidement est essentielle. Il permet au client de maximiser la valeur livrée tout en gardant la liberté de changer de cap, et il garantit au prestataire une juste rémunération même en cas d’arrêt prématuré du projet.
+
+
+### Comparatif rapide
+
+| Contrat                                      | Périmètre         | Coût              | Flexibilité      | Risque principal                                 |
+|-----------------------------------------------|-------------------|-------------------|------------------|--------------------------------------------------|
+| Coût variable (T&M)                          | Évolutif          | Variable          | Maximale         | Pour le client (dépassement de budget)           |
+| Coût fixe                                    | Figé              | Fixe              | Faible           | Pour le fournisseur (dépassement de charge)      |
+| Budget par sprint                            | Évolutif (par sprint) | Fixe (par sprint) | Élevée           | Pour le client (coût total incertain)            |
+| Payé pour rien, changement gratuit (MFN, CFF)| Évolutif          | Fixe (global)     | Maximale         | Pour le client (indemnité d'arrêt anticipé), nécessite confiance |
+
+## Méthode LeSS (Large Scale Scrum)
+
+- <span style="color:#388e3c"><strong>Un seul backlog</strong></span> pour toutes les équipes
+- <span style="color:#388e3c"><strong>Un unique Product Owner</strong></span>
+- <span style="color:#388e3c"><strong>Même Definition of Done (DoD)</strong></span> pour tous
+- <span style="color:#388e3c"><strong>Équipes multi-compétences uniquement</strong></span> (pas d’équipes spécialisées)
+- <span style="color:#1976d2"><strong>Coordination et répartition</strong></span> entre équipes pour maximiser la valeur
+
+**Déroulement en deux temps :**
+1. <span style="color:#fbc02d"><strong>Planification commune</strong></span> : le Product Owner et des représentants des équipes répartissent ensemble les stories, avec possibilité de collaboration inter-équipes.
+2. <span style="color:#fbc02d"><strong>Travail autonome</strong></span> : chaque équipe avance indépendamment (daily meeting propre), mais l’entraide reste possible entre membres d’équipes différentes.
+
+- <span style="color:#1976d2"><strong>Scrum of Scrums</strong></span> : réunions ponctuelles pour synchroniser l’ensemble des équipes.
+
+```mermaid
+graph TD
+    A[Product Owner] --> B(Planification Commune)
+    B --> C{Équipe 1 Travail Autonome}
+    B --> D{Équipe 2 Travail Autonome}
+
+    C --> F(Daily Scrum Équipe 1)
+    D --> G(Daily Scrum Équipe 2)
+    F -- "Synchronisation" --> H(Scrum of Scrums)
+    G -- "Synchronisation" --> H
+    H --> B
+```
+
