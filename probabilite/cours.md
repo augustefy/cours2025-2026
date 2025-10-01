@@ -1,11 +1,11 @@
-# TD5 - Variable aléatoire continues 
+# Cours 5 - Variable aléatoire continues 
 
-Une variable aléatoire $X$ est dite continue s’il existe une fonction $f : \mathbb{R} \to \mathbb{R}$, appelée densité de probabilité, telle que pour tout intervalle réel $[a, b]$ :
+Une **variable aléatoire $X$ est dite continue** s’il existe une **fonction $f : \mathbb{R} \to \mathbb{R}$, appelée densité de probabilité**, telle que pour tout intervalle réel $[a, b]$ :
 $$
 P(a \leq X \leq b) = \int_{a}^{b} f(x)\,dx
 $$
 
-La fonction ƒ s’appelle la densité de probabilité de $X$.
+La fonction ƒ s’appelle la **densité de probabilité de $X$**.
 
 ---
 
@@ -13,14 +13,14 @@ La fonction ƒ s’appelle la densité de probabilité de $X$.
 
 ### 1. Qu'est-ce qu'une variable aléatoire continue ?
 
-*   C'est une variable dont les valeurs peuvent être n'importe quel nombre dans un intervalle (par exemple, la taille d'une personne, le temps d'attente à un arrêt de bus).
+*   C'est une variable dont les **valeurs peuvent être n'importe quel nombre dans un intervalle** (par exemple, la taille d'une personne, le temps d'attente à un arrêt de bus).
 *   Contrairement aux variables discrètes (qui ont des valeurs distinctes comme le résultat d'un dé), ici, il y a une infinité de valeurs possibles entre deux points.
 
 ### 2. Le rôle de la fonction de densité de probabilité (**f(x)**)
 
 *   Pour les variables continues, on ne parle **pas de la probabilité d'une valeur exacte** (elle est toujours de 0).
-*   On parle plutôt de la probabilité que la variable se trouve dans un certain intervalle.
-*   C'est là qu'intervient la fonction de densité de probabilité, notée \(f(x)\). Elle nous aide à calculer ces probabilités.
+*   On parle plutôt de la **probabilité que la variable se trouve dans un certain intervalle**.
+*   C'est là qu'intervient la **fonction de densité de probabilité, notée \(f(x)\)**. Elle nous aide à calculer ces probabilités.
 
 ### 3. Comment calculer la probabilité d'un intervalle ?
 
@@ -32,11 +32,11 @@ La fonction ƒ s’appelle la densité de probabilité de $X$.
 ### 4. Propriétés importantes de **f(x)** :
 
 *   La fonction \(f(x)\) doit toujours être **positive ou nulle** (\(f(x) \geq 0\)). Une probabilité ne peut pas être négative !
-*   L'aire totale sous la courbe de \(f(x)\) sur tout l'axe des nombres réels doit être **égale à 1**. C'est logique, car la somme de toutes les probabilités possibles doit faire 100%. \(\left(\int_{-\infty}^{\infty} f(x)\,dx = 1\right)\).
+*   L'aire totale sous la courbe de \(f(x)\) sur tout l'axe des nombres réels doit être **égale à 1**. C'est logique, car la somme de toutes les probabilités possibles doit faire 100%. (\(\int_{-\infty}^{\infty} f(x)\,dx = 1\)).
 
 ### 5. Cas particulier : La loi uniforme continue
 
-Lorsqu'une variable aléatoire continue $X$ suit une loi uniforme sur l'intervalle $[a, b]$, cela signifie que toutes les valeurs de cet intervalle ont la même "densité" de probabilité d'apparition. Sa fonction de densité de probabilité $f(x)$ est définie comme suit :
+Lorsqu'une variable aléatoire continue $X$ suit une **loi uniforme sur l'intervalle $[a, b]$**, cela signifie que toutes les valeurs de cet intervalle ont la même "densité" de probabilité d'apparition. Sa **fonction de densité de probabilité $f(x)$** est définie comme suit :
 
 $$f(x) = \begin{cases}
 \frac{1}{b-a} & \text{pour } a \leq x \leq b \\
@@ -47,7 +47,7 @@ $$f(x) = \begin{cases}
 
 ## Démonstration de l'espérance mathématique pour une loi uniforme
 
-Pour une variable aléatoire continue $X$ suivant une loi uniforme sur l'intervalle $[a, b]$, l'espérance mathématique $E[X]$ (la moyenne) est donnée par :
+Pour une variable aléatoire continue $X$ suivant une loi uniforme sur l'intervalle $[a, b]$, l'**espérance mathématique $\mathbf{E[X]}$** (la moyenne) est donnée par :
 
 $$E[X] = \frac{a+b}{2}$$
 
@@ -55,7 +55,7 @@ Voici la démonstration étape par étape :
 
 **1. Formule générale de l'espérance pour une variable continue**
 
-L'espérance $E[X]$ d'une variable aléatoire continue est définie par l'intégrale de $x$ multiplié par sa fonction de densité de probabilité $f(x)$ sur tout l'ensemble des réels :
+L'**espérance $\mathbf{E[X]}$ d'une variable aléatoire continue** est définie par l'intégrale de $x$ multiplié par sa fonction de densité de probabilité $f(x)$ sur tout l'ensemble des réels :
 
 $$E[X] = \int_{-\infty}^{\infty} x \cdot f(x)\,dx$$
 
@@ -67,7 +67,7 @@ $$E[X] = \int_{a}^{b} x \cdot \frac{1}{b-a}\,dx$$
 
 **3. Sortir la constante de l'intégrale**
 
-$\\frac{1}{b-a}$ est une constante, nous pouvons donc la sortir de l'intégrale :
+$\frac{1}{b-a}$ est une constante, nous pouvons donc la sortir de l'intégrale :
 
 $$E[X] = \frac{1}{b-a} \int_{a}^{b} x\,dx$$
 
@@ -105,7 +105,7 @@ Cette démonstration montre comment, pour une distribution uniforme, l'espéranc
 
 ## Démonstration de la variance pour une loi uniforme
 
-Pour une variable aléatoire continue $X$ suivant une loi uniforme sur l'intervalle $[a, b]$, la variance $V[X]$ est donnée par :
+Pour une variable aléatoire continue $X$ suivant une loi uniforme sur l'intervalle $[a, b]$, la **variance $\mathbf{V[X]}$** est donnée par :
 
 $$V[X] = \frac{(b-a)^2}{12}$$
 
@@ -113,13 +113,13 @@ Voici la démonstration étape par étape :
 
 **1. Formule générale de la variance**
 
-La variance $V[X]$ d'une variable aléatoire continue est définie par la formule :
+La **variance $\mathbf{V[X]}$ d'une variable aléatoire continue** est définie par la formule :
 
-$$V[X] = E[X^2] - (E[X])^2$$
+$$V[X] = \mathbf{E[X^2]} - (\mathbf{E[X]})^2$$
 
 Nous avons déjà calculé $E[X] = \frac{a+b}{2}$. Nous devons maintenant calculer $E[X^2]$.
 
-**2. Calcul de $E[X^2]$ pour une loi uniforme**
+**2. Calcul de $\mathbf{E[X^2]}$ pour une loi uniforme**
 
 La formule générale pour $E[X^2]$ est :
 
@@ -181,4 +181,5 @@ Ce qui nous donne la variance pour une loi uniforme :
 
 $$V[X] = \frac{(b-a)^2}{12}$$ 
 
+# TD 5 - Variable aléatoire continues 
 
