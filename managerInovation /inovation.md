@@ -52,7 +52,17 @@ Un manager qui se concentre uniquement sur l’exploitation risque de voir son e
 Le rôle du manager de l’innovation est donc de piloter ce double mouvement : exploiter le présent tout en préparant l’avenir. Il doit savoir arbitrer, encourager la prise d’initiative, et créer un environnement propice à l’émergence de nouvelles idées tout en assurant la performance opérationnelle de l’entreprise.
 
 
+### Valeur Perçue 
 
+La valeur perçue d’un produit ne se limite pas à ses caractéristiques techniques ou à son prix : elle dépend aussi de l’image que le produit renvoie et de la façon dont il s’inscrit dans l’univers de l’entreprise. L’image de marque, le design, la communication et l’expérience globale associée au produit jouent un rôle essentiel dans la perception qu’en ont les clients.
+
+On distingue plusieurs dimensions de la valeur perçue :
+
+- **La valeur d’usage** : c’est l’utilité concrète du produit, sa capacité à répondre à un besoin fonctionnel ou à résoudre un problème pour l’utilisateur.
+- **La valeur hédonique** : elle correspond au plaisir, à l’émotion ou à la satisfaction sensorielle que procure le produit. Cela peut passer par le design, l’ergonomie, le prestige ou le sentiment d’appartenance à une communauté.
+- **La valeur d’image** : le produit véhicule une image, des valeurs ou un style de vie qui peuvent renforcer l’identité de l’acheteur ou lui permettre de se différencier.
+
+Pour le manager, il est donc crucial de travailler à la fois sur la performance d’usage du produit, sur l’expérience émotionnelle qu’il procure et sur l’image qu’il projette, afin de maximiser la valeur perçue et la préférence des clients.
 
 
 
