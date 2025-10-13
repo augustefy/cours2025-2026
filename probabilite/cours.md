@@ -32,7 +32,7 @@ La fonction ƒ s’appelle la **densité de probabilité de $X$**.
 ### 4. Propriétés importantes de **f(x)** :
 
 *   La fonction $f(x)$ doit toujours être **positive ou nulle** ($f(x) \geq 0$). Une probabilité ne peut pas être négative !
-*   L'aire totale sous la courbe de $f(x)$ sur tout l'axe des nombres réels doit être **égale à 1**. C'est logique, car la somme de toutes les probabilités possibles doit faire 100%. ($$$\int_{-\infty}^{\infty} f(x)\,dx = 1$$$).
+*   L'aire totale sous la courbe de $f(x)$ sur tout l'axe des nombres réels doit être **égale à 1**. C'est logique, car la somme de toutes les probabilités possibles doit faire 100%. ($\int_{-\infty}^{\infty} f(x)\,dx = 1$).
 
 ### 5. Cas particulier : La loi uniforme continue
 
@@ -349,4 +349,150 @@ La propriété d'absence de mémoire de la loi exponentielle implique que le "ta
 *   **Périodes de jeunesse/maturité/vieillesse :** Les taux de mortalité ne sont pas constants. Ils sont souvent élevés à la naissance, diminuent pendant la jeunesse, puis augmentent significativement à mesure que l'individu vieillit.
 
 En conclusion, bien que la loi exponentielle soit un modèle utile pour sa simplicité et sa propriété d'absence de mémoire, elle n'est **pas très réaliste** pour modéliser la durée de vie des marmottes ou de tout autre organisme biologique qui vieillit. 
+
+
+
+## Résumé – Loi normale (loi de Gauss)
+
+### 1. Définition et paramètres
+
+*   On note $X \sim \mathcal{N}(\mu, \sigma^2)$ une variable aléatoire normale de moyenne $\mu \in \mathbb{R}$ et variance $\sigma^2 > 0$.
+*   La normale centrée réduite est $Z \sim \mathcal{N}(0,1)$, de densité notée $\varphi$ et de fonction de répartition notée $\Phi$.
+
+### 2. Densité de probabilité
+
+La densité de $X \sim \mathcal{N}(\mu, \sigma^2)$ est
+$$
+f_X(x) = \frac{1}{\sigma \sqrt{2\pi}}\, \exp\!\left( -\frac{(x-\mu)^2}{2\sigma^2} \right), \quad x \in \mathbb{R}.
+$$
+
+### 3. Fonction de répartition et standardisation
+
+*   Il n'existe pas de forme fermée élémentaire pour la CDF $F_X(x)=P(X\le x)$, mais on utilise la CDF de la normale centrée réduite $\Phi$ via la standardisation.
+*   Si $Z = \dfrac{X-\mu}{\sigma}$, alors $Z \sim \mathcal{N}(0,1)$ et
+$$
+P(X \le x) = P\!\left( Z \le \frac{x-\mu}{\sigma} \right) = \Phi\!\left( \frac{x-\mu}{\sigma} \right).
+$$
+
+### 4. Moments et propriétés de forme
+
+*   Espérance : $\mathbf{E}[X] = \mu$
+*   Variance : $\mathbf{V}[X] = \sigma^2$
+*   Symétrie : la densité est symétrique autour de $\mu$. Pour $Z$, $\Phi(-z) = 1 - \Phi(z)$.
+
+### 5. Probabilités usuelles et règle 68–95–99,7
+
+Pour $X \sim \mathcal{N}(\mu,\sigma^2)$ :
+*   $P(\mu-\sigma \le X \le \mu+\sigma) \approx 0{,}68$
+*   $P(\mu-2\sigma \le X \le \mu+2\sigma) \approx 0{,}95$
+*   $P(\mu-3\sigma \le X \le \mu+3\sigma) \approx 0{,}997$
+
+Calcul type par standardisation : pour $a<b$,
+$$
+P(a \le X \le b) = \Phi\!\left(\frac{b-\mu}{\sigma}\right) - \Phi\!\left(\frac{a-\mu}{\sigma}\right).
+$$
+
+### 6. Quantiles et scores-z
+
+*   Le quantile d'ordre $p$ de $Z$ est $z_p$ tel que $\Phi(z_p)=p$.
+*   Quantile de $X$ : $x_p = \mu + \sigma\, z_p$.
+*   Exemples classiques (approx.) : $z_{0{,}975} \approx 1{,}96$, $z_{0{,}95} \approx 1{,}645$, $z_{0{,}84} \approx 1$.
+
+### 7. Transformations linéaires et sommes
+
+*   Si $X \sim \mathcal{N}(\mu,\sigma^2)$ et $Y = aX + b$ avec $a\in\mathbb{R}, b\in\mathbb{R}$, alors
+$$
+Y \sim \mathcal{N}(a\mu + b,\; a^2\sigma^2).
+$$
+*   Si $X_1,\dots,X_n$ sont indépendantes avec $X_i \sim \mathcal{N}(\mu_i, \sigma_i^2)$, alors la somme est normale :
+$$
+S_n=\sum_{i=1}^n X_i \sim \mathcal{N}\!\left(\sum_{i=1}^n \mu_i,\; \sum_{i=1}^n \sigma_i^2\right).
+$$
+En particulier, pour $X_i \overset{i.i.d.}{\sim} \mathcal{N}(\mu,\sigma^2)$, la moyenne $\overline{X} = \frac{1}{n}\sum X_i$ suit
+$$
+\overline{X} \sim \mathcal{N}\!\left( \mu,\; \frac{\sigma^2}{n} \right).
+$$
+
+### 8. Intervalles de confiance (σ connu)
+
+Si $X_1,\dots,X_n$ i.i.d. $\mathcal{N}(\mu,\sigma^2)$ avec $\sigma$ supposé connu, alors un IC bilatéral de niveau $1-\alpha$ pour $\mu$ est
+$$
+\left[\; \overline{X} - z_{1-\alpha/2}\, \frac{\sigma}{\sqrt{n}}\; ;\; \overline{X} + z_{1-\alpha/2}\, \frac{\sigma}{\sqrt{n}} \;\right].
+$$
+
+### 9. Approximation et lien avec la binomiale (idée)
+
+Pour $S \sim \mathrm{Bin}(n,p)$, lorsque $n$ est grand et $p$ ni trop proche de 0 ni de 1, on peut approximer
+$$
+\frac{S - np}{\sqrt{np(1-p)}} \approx Z \sim \mathcal{N}(0,1),
+$$
+ce qui provient du théorème central limite et permet des calculs approchés de probabilités binomiales.
+
+### 10. Recettes de calcul rapides
+
+*   Probabilité à gauche : $P(X \le x) = \Phi((x-\mu)/\sigma)$
+*   Probabilité à droite : $P(X > x) = 1 - \Phi((x-\mu)/\sigma)$
+*   Bande $[a,b]$ : $\Phi((b-\mu)/\sigma) - \Phi((a-\mu)/\sigma)$
+*   Seuil pour une probabilité $p$ à droite : trouver $z$ tel que $1-\Phi(z)=p$, puis $x = \mu + \sigma z$
+
+
+## TD6 - La loi normale
+
+
+
+### TD7 – Exercice 1 (loi exponentielle)
+
+On suppose que la durée de vie (en jours) d'une carte mère est une variable aléatoire $d$ suivant une loi exponentielle de paramètre $\lambda = 0{,}0002$ (par jour).
+
+Rappels (loi exponentielle $\mathrm{Exp}(\lambda)$) :
+*   Densité: $f(x) = \lambda e^{-\lambda x}$ pour $x \ge 0$;
+*   Répartition: $F(x) = 1 - e^{-\lambda x}$;
+*   Queue: $P(d > x) = e^{-\lambda x}$;
+*   Espérance et écart-type: $\mathbf{E}[d] = \sigma_d = 1/\lambda$.
+
+1) Durée de vie moyenne
+$$
+\mathbf{E}[d] = \frac{1}{\lambda} = \frac{1}{0{,}0002} = 5000\ \text{jours} \approx 13{,}70\ \text{ans} \ (365\ \text{j/an}).
+$$
+
+2) Écart-type
+$$
+\sigma_d = \frac{1}{\lambda} = 5000\ \text{jours} \approx 13{,}70\ \text{ans}.
+$$
+
+3) Probabilité d'une durée de vie supérieure à 5 ans
+$$
+5\ \text{ans} \approx 5\times 365 = 1825\ \text{jours},\qquad P(d>1825) = e^{-\lambda\cdot 1825} = e^{-0{,}0002\times 1825} = e^{-0{,}365} \approx 0{,}694.
+$$
+
+4) Médiane $D$ telle que $P(d \le D) = 0{,}5$
+$$
+1 - e^{-\lambda D} = 0{,}5 \ \Longleftrightarrow\ e^{-\lambda D} = 0{,}5 \ \Longleftrightarrow\ D = \frac{\ln 2}{\lambda} \approx \frac{0{,}693147}{0{,}0002} = 3465{,}7\ \text{jours} \approx 9{,}50\ \text{ans}.
+$$
+
+### TD7 – Exercice 2 (loi normale centrée réduite)
+
+Soit $X \sim \mathcal{N}(0,1)$.
+
+1) Calculs de probabilités
+
+En notant $\Phi$ la CDF de $\mathcal{N}(0,1)$ et en utilisant la symétrie:
+*   $P(X \le 1) = \Phi(1) \approx 0{,}8413$
+*   $P(X \le 2) = \Phi(2) \approx 0{,}9772$
+*   $P(|X| \le 1) = P(-1 \le X \le 1) = 2\Phi(1) - 1 \approx 0{,}6827$
+*   $P(|X| \le 2) = 2\Phi(2) - 1 \approx 0{,}9545$
+
+2) Déterminer $a$ tel que $P(|X| \le a) = 0{,}95$
+
+On veut $2\Phi(a) - 1 = 0{,}95 \;\Rightarrow\; \Phi(a) = 0{,}975$. Donc $a = z_{0{,}975} \approx 1{,}96$.
+
+3) Calculer $P(X \le -2{,}41)$ et $P(X \ge 1{,}52)$
+
+*   $P(X \le -2{,}41) = \Phi(-2{,}41) = 1 - \Phi(2{,}41) \approx 1 - 0{,}9920 = 0{,}0080$
+*   $P(X \ge 1{,}52) = 1 - \Phi(1{,}52) \approx 1 - 0{,}9357 = 0{,}0643$
+
+4) Déterminer $a$ tel que $P(X \le a) = 0{,}612$
+
+On cherche $a = z_{0{,}612}$. Par interpolation de table: $a \approx 0{,}284$ (car $\Phi(0{,}28) \approx 0{,}6103$ et $\Phi(0{,}29) \approx 0{,}6141$).
+
 
