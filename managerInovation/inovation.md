@@ -66,3 +66,8 @@ Pour le manager, il est donc crucial de travailler à la fois sur la performance
 
 
 
+# Biais connitif 
+
+## Effet de halo 
+L'effet de halo est un biais cognitif qui consiste à juger une personne, un produit ou une organisation dans sa globalité à partir d'une seule caractéristique positive (ou négative). Par exemple, si un produit possède un design particulièrement attrayant, les consommateurs auront tendance à penser qu'il est également performant ou fiable, même sans preuve objective. Ce phénomène peut influencer fortement les décisions d'achat et la perception globale d'une marque ou d'une innovation.
+
