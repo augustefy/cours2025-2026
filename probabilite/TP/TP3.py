@@ -289,3 +289,7 @@ if __name__ == "__main__":
 
     # Fin
     print("\nFin des calculs. Vous pouvez modifier N_simulations ou seed en tête de ce script.")
+
+
+
+    

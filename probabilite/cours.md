@@ -440,7 +440,7 @@ ce qui provient du théorème central limite et permet des calculs approchés de
 
 
 
-### TD7 – Exercice 1 (loi exponentielle)
+### TD6 – Exercice 1 (loi exponentielle)
 
 On suppose que la durée de vie (en jours) d'une carte mère est une variable aléatoire $d$ suivant une loi exponentielle de paramètre $\lambda = 0{,}0002$ (par jour).
 
@@ -470,7 +470,7 @@ $$
 1 - e^{-\lambda D} = 0{,}5 \ \Longleftrightarrow\ e^{-\lambda D} = 0{,}5 \ \Longleftrightarrow\ D = \frac{\ln 2}{\lambda} \approx \frac{0{,}693147}{0{,}0002} = 3465{,}7\ \text{jours} \approx 9{,}50\ \text{ans}.
 $$
 
-### TD7 – Exercice 2 (loi normale centrée réduite)
+### TD6 – Exercice 2 (loi normale centrée réduite)
 
 Soit $X \sim \mathcal{N}(0,1)$.
 
@@ -495,4 +495,70 @@ On veut $2\Phi(a) - 1 = 0{,}95 \;\Rightarrow\; \Phi(a) = 0{,}975$. Donc $a = z_{
 
 On cherche $a = z_{0{,}612}$. Par interpolation de table: $a \approx 0{,}284$ (car $\Phi(0{,}28) \approx 0{,}6103$ et $\Phi(0{,}29) \approx 0{,}6141$).
 
+
+## TD7 - Plusieurs variable 
+
+## Cours 6 – Plusieurs variables aléatoires (discrètes et continues)
+
+### 1. Couples de variables aléatoires et lois conjointes
+
+- **Définition**: Un couple \((X,Y)\) est une variable aléatoire à valeurs dans \(\mathbb{R}^2\). Sa loi est décrite par:
+  - **Cas discret**: masse conjointe \(p_{X,Y}(x,y)=P(X=x,\,Y=y)\); \(\sum_{x}\sum_{y} p_{X,Y}(x,y)=1\).
+  - **Cas continu**: densité conjointe \(f_{X,Y}(x,y)\ge 0\) avec \(\iint f_{X,Y}=1\) et pour \(A\subseteq\mathbb{R}^2\), \(P((X,Y)\in A)=\iint_A f_{X,Y}\).
+
+### 2. Lois marginales
+
+- Discret: \(p_X(x)=\sum_y p_{X,Y}(x,y)\), \(p_Y(y)=\sum_x p_{X,Y}(x,y)\).
+- Continu: \(f_X(x)=\int f_{X,Y}(x,y)\,dy\), \(f_Y(y)=\int f_{X,Y}(x,y)\,dx\).
+
+### 3. Lois conditionnelles et indépendance
+
+- Discret: si \(p_Y(y)>0\), \(p_{X|Y}(x|y)=\dfrac{p_{X,Y}(x,y)}{p_Y(y)}\).
+- Continu: si \(f_Y(y)>0\), \(f_{X|Y}(x|y)=\dfrac{f_{X,Y}(x,y)}{f_Y(y)}\).
+- **Indépendance**: \(X\) et \(Y\) indépendantes si la conjointe factorise: \(p_{X,Y}=p_Xp_Y\) (discret) ou \(f_{X,Y}=f_Xf_Y\) (continu).
+- Si indépendance: \(\mathbf{E}[g(X)h(Y)]=\mathbf{E}[g(X)]\,\mathbf{E}[h(Y)]\).
+
+### 4. Espérances, variances et moments croisés
+
+- Discret: \(\mathbf{E}[g(X,Y)]=\sum_x\sum_y g(x,y)\,p_{X,Y}(x,y)\).
+- Continu: \(\mathbf{E}[g(X,Y)]=\iint g(x,y)\,f_{X,Y}(x,y)\,dxdy\).
+- Moments: \(\mathbf{E}[X]\), \(\mathbf{E}[Y]\), et \(\mathbf{E}[XY]\) via la conjointe.
+- **Covariance**: \(\mathrm{Cov}(X,Y)=\mathbf{E}[XY]-\mathbf{E}[X]\,\mathbf{E}[Y]\).
+- **Corrélation**: \(\rho=\dfrac{\mathrm{Cov}(X,Y)}{\sigma_X\sigma_Y}\) avec \(\rho\in[-1,1]\). Indépendance \(\Rightarrow\) \(\rho=0\) (la réciproque est fausse en général).
+
+### 5. Sommes et combinaisons linéaires
+
+- Pour \(S=aX+bY\): \(\mathbf{E}[S]=a\mathbf{E}[X]+b\mathbf{E}[Y]\) et \(\mathrm{Var}(S)=a^2\mathrm{Var}(X)+b^2\mathrm{Var}(Y)+2ab\,\mathrm{Cov}(X,Y)\).
+- Cas \(S=X+Y\): \(\mathrm{Var}(X+Y)=\mathrm{Var}(X)+\mathrm{Var}(Y)+2\,\mathrm{Cov}(X,Y)\). Si indépendance: variances s’additionnent.
+- Loi de \(X+Y\) (indépendants): par **convolution** des masses/densités.
+
+### 6. Lois totales (itération de l’espérance et de la variance)
+
+- \(\mathbf{E}[X]=\mathbf{E}[\,\mathbf{E}[X\mid Y] \,]\).
+- \(\mathrm{Var}(X)=\mathbf{E}[\,\mathrm{Var}(X\mid Y)\,]+\mathrm{Var}(\,\mathbf{E}[X\mid Y] \,)\).
+
+### 7. Bayes (discret) et rappel
+
+- \(P(A\mid B)=\dfrac{P(B\mid A)P(A)}{P(B)}\), \(P(B)=\sum_i P(B\mid A_i)P(A_i)\).
+- Version variables: \(p_{X\mid Y}(x\mid y)=\dfrac{p_{Y\mid X}(y\mid x)\,p_X(x)}{p_Y(y)}\).
+
+### 8. Densités conditionnelles et domaines (continu)
+
+- \(f_{X\mid Y}(x\mid y)=f_{X,Y}(x,y)/f_Y(y)\) si \(f_Y(y)>0\). Bien identifier le domaine d’intégration avant tout calcul.
+
+### 9. Cas gaussien (rappel)
+
+- Si \((X,Y)\) est gaussien bidimensionnel, les marginales et conditionnelles sont gaussiennes; \(aX+bY\) est normal. Indépendance \(\Leftrightarrow\) matrice de covariance diagonale.
+
+---
+
+### Mémo – Formules clés
+
+- **Marginales**: \(p_X(x)=\sum_y p_{X,Y}(x,y)\), \(f_X(x)=\int f_{X,Y}(x,y)\,dy\).
+- **Conditionnelles**: \(p_{X\mid Y}(x\mid y)=p_{X,Y}(x,y)/p_Y(y)\), \(f_{X\mid Y}(x\mid y)=f_{X,Y}(x,y)/f_Y(y)\).
+- **Indépendance**: conjointe = produit des marginales.
+- **Covariance**: \(\mathrm{Cov}(X,Y)=\mathbf{E}[XY]-\mathbf{E}[X]\,\mathbf{E}[Y]\).
+- **Corrélation**: \(\rho=\mathrm{Cov}(X,Y)/(\sigma_X\sigma_Y)\).
+- **Variance d’une somme**: \(\mathrm{Var}(aX+bY)=a^2\mathrm{Var}(X)+b^2\mathrm{Var}(Y)+2ab\,\mathrm{Cov}(X,Y)\).
+- **Lois totales**: \(\mathbf{E}[X]=\mathbf{E}[\mathbf{E}[X\mid Y]]\), \(\mathrm{Var}(X)=\mathbf{E}[\mathrm{Var}(X\mid Y)]+\mathrm{Var}(\mathbf{E}[X\mid Y])\).
 
