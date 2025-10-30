@@ -23,3 +23,48 @@ Exemple :
     - permet de gérer les data objet 
 
     - Table Data Gateway
+
+
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant V as Vue (Form)
+  participant B as Navigateur
+  participant F as FrontController
+  participant R as AltoRouter
+  participant C as UserController
+  participant S as Service/Modèle
+  participant T as Template/Vue
+
+  V->>B: Submit POST /user/updateProfile (form data + CSRF)
+  B->>F: Requête HTTP
+  F->>R: match()
+  R-->>F: {target: UserController, action: updateProfile}
+  F->>F: Contrôle d'accès (session/role)
+  alt Accès refusé
+    F-->>B: 401/403 (ou redirection vers login)
+  else OK
+    F->>C: new UserController();
+    F->>C: call updateProfile(params)
+    C->>C: Validation (CSRF, données)
+    alt Données invalides
+      C-->>T: Rendu vue avec erreurs
+      T-->>B: HTML (400/422)
+    else Valide
+      C->>S: Appel logique métier (update)
+      S-->>C: Succès/échec
+      alt Succès (PRG)
+        C-->>B: Redirect 302 vers /user/seeProfile
+        B->>F: GET /user/seeProfile
+        F->>R: match() ⇒ seeProfile
+        F->>C: call seeProfile()
+        C-->>T: Rendu profil (flash "succès")
+        T-->>B: HTML 200
+      else Échec serveur
+        C-->>F: throw Exception
+        F-->>B: 500 + page d'erreur
+      end
+    end
+  end
+```

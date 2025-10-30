@@ -1,29 +1,6 @@
--- CREATE OR REPLACE FUNCTION isbestaway(teamId INTEGER, seasonParam INTEGER)
--- RETURNS BOOLEAN AS $$
--- DECLARE
---     away_wins INTEGER;
---     home_wins INTEGER;
--- BEGIN
---     -- Nombre de victoires à l'extérieur pour l'équipe donnée lors de la saison
---     SELECT COUNT(*) INTO away_wins
---     FROM Game
---     WHERE idVisitorTeam = teamId
---       AND NOT homeTeamWins
---       AND season = seasonParam;
---
---     -- Nombre de victoires à domicile pour l'équipe donnée lors de la saison
---     SELECT COUNT(*) INTO home_wins
---     FROM Game
---     WHERE idHomeTeam = teamId
---       AND homeTeamWins
---       AND season = seasonParam;
---
---     RETURN away_wins >= home_wins;
--- END;
--- $$ LANGUAGE plpgsql;
 
 
-
+-- Q1 : Fonction pour savoir si une équipe a plus (ou égal) de victoires à l'extérieur qu'à domicile sur une saison
 CREATE OR REPLACE FUNCTION isbestaway(teamId character varying(10), seasonParam numeric)
 RETURNS BOOLEAN AS $$
 DECLARE
@@ -51,8 +28,7 @@ SELECT isbestaway(
     2021
 );
 
-
-
+-- Q2 : Fonction pour obtenir toutes les équipes "bestaway" pour une saison donnée
 CREATE OR REPLACE FUNCTION bestAway(seasonParam numeric)
 RETURNS TABLE (
     id            character varying(10),
@@ -86,6 +62,7 @@ END;
 $$;
 
 
+-- Q3 : Fonction qui teste si une équipe a été "bestaway" n saisons consécutives
 CREATE OR REPLACE FUNCTION bestAwayConsecutive(teamId character varying(10), n integer)
 RETURNS boolean
 LANGUAGE plpgsql
@@ -146,7 +123,7 @@ BEGIN
 END;
 $$;
 
-
+-- Q4 : Fonction pour récupérer l'équipe avec le meilleur pourcentage de tirs à 3 pts sur une saison
 DROP FUNCTION IF EXISTS bestPercentage3pt(integer);
 
 CREATE OR REPLACE FUNCTION bestPercentage3pt(season_year integer)
@@ -175,7 +152,7 @@ $$ LANGUAGE plpgsql;
 
 SELECT bestPercentage3pt(2021);
 
-
+-- Q5 : Fonction qui calcule le total de 3pts marqués par un joueur pour une saison
 CREATE OR REPLACE FUNCTION threePointsByPlayer(playerId character varying(10), seasonParam numeric)
 RETURNS integer AS $$
 DECLARE
@@ -192,6 +169,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Q6 : Fonction qui retourne le meilleur marqueur à 3 pts de la saison
 CREATE OR REPLACE FUNCTION bestThreePointPlayer(season_param numeric)
 RETURNS character varying(10) AS $$
 DECLARE
@@ -213,7 +191,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
+-- Q7 : Pour chaque saison, affiche le meilleur marqueur à 3 pts (nom/id/total)
 DO $$
 DECLARE
     season_rec RECORD;
@@ -243,4 +221,19 @@ BEGIN
             season_rec.season, best_name, best_pid, total_3;
     END LOOP;
 END $$;
+
+
+
+-- Q8 : Fonction qui retourne le meilleur marqueur à 3 pts de la saison
+CREATE OR REPLACE FUNCTION bestThreePointPlayer(season_param numeric)
+RETURNS character varying(10) AS $$
+DECLARE
+    best_player_id character varying(10);
+BEGIN
+    SELECT idplayer
+      INTO best_player_id
+      FROM (
+            SELECT gd.idplayer, SUM(gd.threepointsmade) AS total_3pt
+              FROM gamedetail gd
+
 
