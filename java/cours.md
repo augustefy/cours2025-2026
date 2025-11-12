@@ -334,9 +334,40 @@ Dans cet exemple, la méthode <code>parler()</code> de <b>Chien</b> redéfinit c
 > Concevoir et devlopper une application client qui permet à un medecin de saisir des nouveaux patient et d'afficher la liste de ces patients 
 
 
+# Tp 3 :
 
+## Serialization 
+
+- nécessaire d'implémenter une interface de serialization  
+- pour ensuite manipuler les objets sérializer il est nécessaire d'utiliser **ObjectOutputStream** et **ObjectInputStream**
+
+<span style="color:#FF0000"> **exemple de sérialization :** </span>
+
+>```java 
+>public class Person implements Serializable {
+>    private static final long serialVersionUID = 1L;
+>
+>    private String name;
+>    private int age;
+>    private transient String password; // non sérialisé
+>}
+>```
+
+<span style="color:#FF0000">**sérializer vers un fichier :**</span>  
+>```java
+>    try{
+>        final FileOutputStream fichier = new FileOutputStream("personne.ser");
+>        oos = new ObjectOutputStream(fichier);
+>        oos.writeObject(personne);
+>        oos.flush();
+>    } catch (final java.io.IOException e) {
+>        e.printStackTrace();
+>    }
+>```
 
 
 # Annexe : 
 ## Reference : 
 - Martin Fowler (pour voir la theorie d'UML)
+
+

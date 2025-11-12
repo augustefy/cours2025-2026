@@ -498,67 +498,108 @@ On cherche $a = z_{0{,}612}$. Par interpolation de table: $a \approx 0{,}284$ (c
 
 ## TD7 - Plusieurs variable 
 
-## Cours 6 – Plusieurs variables aléatoires (discrètes et continues)
+## Cours 6 – Plusieurs variables aléatoires
 
 ### 1. Couples de variables aléatoires et lois conjointes
 
-- **Définition**: Un couple \((X,Y)\) est une variable aléatoire à valeurs dans \(\mathbb{R}^2\). Sa loi est décrite par:
-  - **Cas discret**: masse conjointe \(p_{X,Y}(x,y)=P(X=x,\,Y=y)\); \(\sum_{x}\sum_{y} p_{X,Y}(x,y)=1\).
-  - **Cas continu**: densité conjointe \(f_{X,Y}(x,y)\ge 0\) avec \(\iint f_{X,Y}=1\) et pour \(A\subseteq\mathbb{R}^2\), \(P((X,Y)\in A)=\iint_A f_{X,Y}\).
-
-### 2. Lois marginales
-
-- Discret: \(p_X(x)=\sum_y p_{X,Y}(x,y)\), \(p_Y(y)=\sum_x p_{X,Y}(x,y)\).
-- Continu: \(f_X(x)=\int f_{X,Y}(x,y)\,dy\), \(f_Y(y)=\int f_{X,Y}(x,y)\,dx\).
-
-### 3. Lois conditionnelles et indépendance
-
-- Discret: si \(p_Y(y)>0\), \(p_{X|Y}(x|y)=\dfrac{p_{X,Y}(x,y)}{p_Y(y)}\).
-- Continu: si \(f_Y(y)>0\), \(f_{X|Y}(x|y)=\dfrac{f_{X,Y}(x,y)}{f_Y(y)}\).
-- **Indépendance**: \(X\) et \(Y\) indépendantes si la conjointe factorise: \(p_{X,Y}=p_Xp_Y\) (discret) ou \(f_{X,Y}=f_Xf_Y\) (continu).
-- Si indépendance: \(\mathbf{E}[g(X)h(Y)]=\mathbf{E}[g(X)]\,\mathbf{E}[h(Y)]\).
-
-### 4. Espérances, variances et moments croisés
-
-- Discret: \(\mathbf{E}[g(X,Y)]=\sum_x\sum_y g(x,y)\,p_{X,Y}(x,y)\).
-- Continu: \(\mathbf{E}[g(X,Y)]=\iint g(x,y)\,f_{X,Y}(x,y)\,dxdy\).
-- Moments: \(\mathbf{E}[X]\), \(\mathbf{E}[Y]\), et \(\mathbf{E}[XY]\) via la conjointe.
-- **Covariance**: \(\mathrm{Cov}(X,Y)=\mathbf{E}[XY]-\mathbf{E}[X]\,\mathbf{E}[Y]\).
-- **Corrélation**: \(\rho=\dfrac{\mathrm{Cov}(X,Y)}{\sigma_X\sigma_Y}\) avec \(\rho\in[-1,1]\). Indépendance \(\Rightarrow\) \(\rho=0\) (la réciproque est fausse en général).
-
-### 5. Sommes et combinaisons linéaires
-
-- Pour \(S=aX+bY\): \(\mathbf{E}[S]=a\mathbf{E}[X]+b\mathbf{E}[Y]\) et \(\mathrm{Var}(S)=a^2\mathrm{Var}(X)+b^2\mathrm{Var}(Y)+2ab\,\mathrm{Cov}(X,Y)\).
-- Cas \(S=X+Y\): \(\mathrm{Var}(X+Y)=\mathrm{Var}(X)+\mathrm{Var}(Y)+2\,\mathrm{Cov}(X,Y)\). Si indépendance: variances s’additionnent.
-- Loi de \(X+Y\) (indépendants): par **convolution** des masses/densités.
-
-### 6. Lois totales (itération de l’espérance et de la variance)
-
-- \(\mathbf{E}[X]=\mathbf{E}[\,\mathbf{E}[X\mid Y] \,]\).
-- \(\mathrm{Var}(X)=\mathbf{E}[\,\mathrm{Var}(X\mid Y)\,]+\mathrm{Var}(\,\mathbf{E}[X\mid Y] \,)\).
-
-### 7. Bayes (discret) et rappel
-
-- \(P(A\mid B)=\dfrac{P(B\mid A)P(A)}{P(B)}\), \(P(B)=\sum_i P(B\mid A_i)P(A_i)\).
-- Version variables: \(p_{X\mid Y}(x\mid y)=\dfrac{p_{Y\mid X}(y\mid x)\,p_X(x)}{p_Y(y)}\).
-
-### 8. Densités conditionnelles et domaines (continu)
-
-- \(f_{X\mid Y}(x\mid y)=f_{X,Y}(x,y)/f_Y(y)\) si \(f_Y(y)>0\). Bien identifier le domaine d’intégration avant tout calcul.
-
-### 9. Cas gaussien (rappel)
-
-- Si \((X,Y)\) est gaussien bidimensionnel, les marginales et conditionnelles sont gaussiennes; \(aX+bY\) est normal. Indépendance \(\Leftrightarrow\) matrice de covariance diagonale.
+* **Définition :** Un couple $(X, Y)$ de variables aléatoires prend ses valeurs dans $\mathbb{R}^2$ (ou $\mathbb{N}^2$ pour le cas discret). Sa loi est donnée par :
+    - **Cas discret :** la masse conjointe $p_{X,Y}(x, y) = P(X = x, Y = y)$, avec $\sum_{x} \sum_{y} p_{X,Y}(x, y) = 1$.
+    - **Cas continu :** la densité conjointe $f_{X,Y}(x, y) \geq 0$, avec $\iint_{\mathbb{R}^2} f_{X,Y}(x, y) \, dxdy = 1$; pour $A \subseteq \mathbb{R}^2$, $P((X, Y) \in A) = \iint_A f_{X,Y}(x, y) \, dxdy$.
 
 ---
 
-### Mémo – Formules clés
+### 2. Lois marginales
 
-- **Marginales**: \(p_X(x)=\sum_y p_{X,Y}(x,y)\), \(f_X(x)=\int f_{X,Y}(x,y)\,dy\).
-- **Conditionnelles**: \(p_{X\mid Y}(x\mid y)=p_{X,Y}(x,y)/p_Y(y)\), \(f_{X\mid Y}(x\mid y)=f_{X,Y}(x,y)/f_Y(y)\).
-- **Indépendance**: conjointe = produit des marginales.
-- **Covariance**: \(\mathrm{Cov}(X,Y)=\mathbf{E}[XY]-\mathbf{E}[X]\,\mathbf{E}[Y]\).
-- **Corrélation**: \(\rho=\mathrm{Cov}(X,Y)/(\sigma_X\sigma_Y)\).
-- **Variance d’une somme**: \(\mathrm{Var}(aX+bY)=a^2\mathrm{Var}(X)+b^2\mathrm{Var}(Y)+2ab\,\mathrm{Cov}(X,Y)\).
-- **Lois totales**: \(\mathbf{E}[X]=\mathbf{E}[\mathbf{E}[X\mid Y]]\), \(\mathrm{Var}(X)=\mathbf{E}[\mathrm{Var}(X\mid Y)]+\mathrm{Var}(\mathbf{E}[X\mid Y])\).
+* **Cas discret :**
+    - $p_X(x) = \sum_{y} p_{X,Y}(x, y)$
+    - $p_Y(y) = \sum_{x} p_{X,Y}(x, y)$
+
+* **Cas continu :**
+    - $f_X(x) = \int_{-\infty}^{+\infty} f_{X,Y}(x, y) \, dy$
+    - $f_Y(y) = \int_{-\infty}^{+\infty} f_{X,Y}(x, y) \, dx$
+
+---
+
+### 3. Lois conditionnelles et indépendance
+
+* **Cas discret :** si $p_Y(y) > 0$, alors $p_{X|Y}(x|y) = \dfrac{p_{X,Y}(x, y)}{p_Y(y)}$
+* **Cas continu :** si $f_Y(y) > 0$, alors $f_{X|Y}(x|y) = \dfrac{f_{X,Y}(x, y)}{f_Y(y)}$
+* **Indépendance :** $X$ et $Y$ sont indépendantes si et seulement si $p_{X,Y} = p_X p_Y$ (discret) ou $f_{X,Y} = f_X f_Y$ (continu).
+* Si indépendance : $\mathbf{E}[g(X)h(Y)] = \mathbf{E}[g(X)] \cdot \mathbf{E}[h(Y)]$
+
+---
+
+### 4. Espérances, variances et moments croisés
+
+* **Espérance d'une fonction** :
+    - **Discret**  : $\mathbf{E}[g(X, Y)] = \sum_{x} \sum_{y} g(x, y) \, p_{X,Y}(x, y)$
+    - **Continu** : $\mathbf{E}[g(X, Y)] = \iint g(x, y) f_{X,Y}(x, y) \, dxdy$
+
+* **Moments croisés** : $\mathbf{E}[X]$, $\mathbf{E}[Y]$, $\mathbf{E}[XY]$ se calculent à partir de la loi conjointe.
+
+* **Covariance :** $\mathrm{Cov}(X, Y) = \mathbf{E}[XY] - \mathbf{E}[X]\,\mathbf{E}[Y]$
+
+* **Corrélation :** $\rho = \dfrac{\mathrm{Cov}(X, Y)}{\sigma_X \sigma_Y}$ avec $\rho \in [-1, 1]$  
+Indépendance $\implies \rho = 0$ (attention : la réciproque est fausse en général).
+
+---
+
+### 5. Sommes et combinaisons linéaires
+
+* Pour $S = aX + bY$ :
+    - $\mathbf{E}[S] = a\,\mathbf{E}[X] + b\,\mathbf{E}[Y]$
+    - $\mathrm{Var}(S) = a^2\,\mathrm{Var}(X) + b^2\,\mathrm{Var}(Y) + 2ab\,\mathrm{Cov}(X, Y)$
+
+* Cas $S = X + Y$ :
+    - $\mathrm{Var}(X + Y) = \mathrm{Var}(X) + \mathrm{Var}(Y) + 2\mathrm{Cov}(X, Y)$
+    - Si $X$ et $Y$ sont indépendantes : $\mathrm{Var}(X + Y) = \mathrm{Var}(X) + \mathrm{Var}(Y)$
+
+* La loi de $X + Y$ (si indépendants) se calcule par **convolution** (somme des lois/masses ou intégrale des densités).
+
+---
+
+### 6. Lois totales (itération espérance/variance)
+
+* $\mathbf{E}[X] = \mathbf{E}\big[\, \mathbf{E}[X \mid Y]\, \big]$
+* $\mathrm{Var}(X) = \mathbf{E}\big[\, \mathrm{Var}(X \mid Y)\, \big] + \mathrm{Var}\big( \mathbf{E}[X \mid Y] \big)$
+
+---
+
+### 7. Formule de Bayes (cas discret) et extension
+
+* $P(A \mid B) = \dfrac{P(B \mid A) \cdot P(A)}{P(B)}$
+* $P(B) = \sum_{i} P(B \mid A_i) P(A_i)$
+
+* Pour variables : $p_{X|Y}(x|y) = \dfrac{p_{Y|X}(y|x)\,p_X(x)}{p_Y(y)}$ si $p_Y(y) > 0$
+
+---
+
+### 8. Densités conditionnelles et domaines pour le continu
+
+* $f_{X|Y}(x|y) = \frac{f_{X,Y}(x, y)}{f_Y(y)}$  (pour $f_Y(y) > 0$)
+* Toujours bien identifier le domaine d’intégration avant de calculer la probabilité.
+
+---
+
+### 9. Cas gaussien (rappel)
+
+* Si $(X, Y)$ suit une loi normale à deux dimensions (gaussienne bidimensionnelle), alors les marginales et les conditionnelles sont aussi gaussiennes ; toute combinaison linéaire $aX + bY$ suit une loi normale.
+* $X$ et $Y$ indépendantes $\iff$ la matrice de covariance est diagonale.
+
+---
+
+### Résumé visuel – Formules principales
+
+| Concept         | Discret                                      | Continu                                                  |
+|-----------------|----------------------------------------------|---------------------------------------------------------|
+| Marginale       | $p_X(x) = \sum_y p_{X,Y}(x, y)$              | $f_X(x) = \int f_{X,Y}(x, y)\,dy$                      |
+| Conditionnelle  | $p_{X|Y}(x|y) = p_{X,Y}(x, y)/p_Y(y)$        | $f_{X|Y}(x|y) = f_{X,Y}(x, y)/f_Y(y)$                  |
+| Indépendance    | $p_{X,Y}(x, y) = p_X(x) p_Y(y)$              | $f_{X,Y}(x, y) = f_X(x) f_Y(y)$                        |
+| Espérance       | $\mathbf{E}[g(X,Y)] = \sum_{x,y} g(x,y) p_{X,Y}(x, y)$ | $\mathbf{E}[g(X,Y)] = \iint g(x, y) f_{X,Y}(x, y) dxdy$ |
+| Covariance      | $\mathrm{Cov}(X, Y) = \mathbf{E}[XY] - \mathbf{E}[X] \mathbf{E}[Y]$ | Idem |
+| Corrélation     | $\rho = \mathrm{Cov}(X, Y)/(\sigma_X \sigma_Y)$ | Idem |
+| Variance somme  | $\mathrm{Var}(aX + bY)$                      | Idem                                                    |
+| Lois totales    | $\mathbf{E}[X]=\mathbf{E}[\mathbf{E}[X|Y]]$ ; $\mathrm{Var}(X) = \mathbf{E}[\mathrm{Var}(X|Y)] + \mathrm{Var}(\mathbf{E}[X|Y])$ | Idem |
+
+
 
