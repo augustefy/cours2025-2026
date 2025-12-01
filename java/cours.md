@@ -371,3 +371,167 @@ Dans cet exemple, la méthode <code>parler()</code> de <b>Chien</b> redéfinit c
 - Martin Fowler (pour voir la theorie d'UML)
 
 
+# Principe S.O.L.I.D.
+
+## Single responsability principle 
+
+```mermaid
+classDiagram
+    class UtilisateurService {
+        +valider()
+        +sauvegarder()
+        +afficher()
+    }
+
+````
+```mermaid
+classDiagram
+    class UtilisateurValidator {
+        +valider()
+    }
+
+    class UtilisateurRepository {
+        +sauvegarder()
+    }
+
+    class UtilisateurAfficheur {
+        +afficher()
+    }
+
+    class UtilisateurService {
+        +enregistrer()
+    }
+
+    UtilisateurService --> UtilisateurValidator : utilise
+    UtilisateurService --> UtilisateurRepository : utilise
+    UtilisateurService --> UtilisateurAfficheur : utilise
+```
+
+## Open/Close principle
+
+```mermaid
+classDiagram
+    class PriceCalculator {
+        +calculerPrix(type)
+    }
+    
+    class Produit {
+        +type
+    }
+
+    PriceCalculator --> Produit
+
+```
+
+
+```mermaid 
+classDiagram
+    class PriceCalculator {
+        +calculer(Produit produit)
+    }
+
+    class Produit {
+        <<interface>>
+        +calculerPrix()
+    }
+
+    class ProduitNormal {
+        +calculerPrix()
+    }
+
+    class ProduitTVA {
+        +calculerPrix()
+    }
+
+    class ProduitPromo {
+        +calculerPrix()
+    }
+
+    PriceCalculator --> Produit : dépend de l'interface
+    Produit <|.. ProduitNormal
+    Produit <|.. ProduitTVA
+    Produit <|.. ProduitPromo
+```
+
+## Liskov Substitution Principle 
+
+```mermaid
+classDiagram
+    class Rectangle {
+        +setLargeur()
+        +setHauteur()
+    }
+
+    class Carre {
+        +setLargeur()
+        +setHauteur()
+    }
+
+    Rectangle <|-- Carre : hérite mais modifie le comportement
+````
+
+```mermaid
+    classDiagram
+    class Forme {
+        <<interface>>
+        +aire()
+    }
+
+    class Rectangle {
+        -largeur
+        -hauteur
+        +aire()
+    }
+
+    class Carre {
+        -cote
+        +aire()
+    }
+
+    Forme <|.. Rectangle
+    Forme <|.. Carre
+```
+
+
+## Interface Segregation Principle 
+
+```mermaid 
+classDiagram
+    class Imprimable {
+        <<interface>>
+        +imprimer()
+    }
+
+    class Scannable {
+        <<interface>>
+        +scanner()
+    }
+
+    class Faxable {
+        <<interface>>
+        +faxer()
+    }
+
+    class ImprimanteBasique {
+        +imprimer()
+    }
+
+    class Photocopieur {
+        +imprimer()
+        +scanner()
+    }
+
+    class MachinePro {
+        +imprimer()
+        +scanner()
+        +faxer()
+    }
+
+    Imprimable <|.. ImprimanteBasique
+    Imprimable <|.. Photocopieur
+    Scannable <|.. Photocopieur
+
+    Imprimable <|.. MachinePro
+    Scannable <|.. MachinePro
+    Faxable <|.. MachinePro
+```
