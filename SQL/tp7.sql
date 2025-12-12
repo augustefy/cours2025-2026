@@ -5,6 +5,7 @@ current_role | current_catalog
 postrgre | TP
 
 -- Q2
+DROP TABLE IF EXISTS Log CASCADE;
 CREATE TABLE Log(
   wwhen timestamp,
   wwho char(20),
@@ -13,13 +14,23 @@ CREATE TABLE Log(
 );
 
 -- Q3
-INSERT INTO Player VALUES ('1001', 'Todd Jackson', 'USA');
-INSERT INTO Player VALUES ('1002', 'Michael Matthews', 'USA');
-INSERT INTO Player VALUES ('1003', 'Jamie Griffith', 'USA');
-INSERT INTO Player VALUES ('1004', 'Iloy Roberts', 'Belgium');
-INSERT INTO Player VALUES ('1005', 'Erin Kolthof', 'Belgium');
+INSERT INTO Player VALUES ('1001', 'Todd Jackson', 'USA') ON CONFLICT DO NOTHING;
+INSERT INTO Player VALUES ('1002', 'Michael Matthews', 'USA') ON CONFLICT DO NOTHING;
+INSERT INTO Player VALUES ('1003', 'Jamie Griffith', 'USA') ON CONFLICT DO NOTHING;
+INSERT INTO Player VALUES ('1004', 'Iloy Roberts', 'Belgium') ON CONFLICT DO NOTHING;
+INSERT INTO Player VALUES ('1005', 'Erin Kolthof', 'Belgium') ON CONFLICT DO NOTHING;
 
 -- Q4
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.tables
+    WHERE table_schema = current_schema AND table_name = 'player'
+  ) THEN
+    DROP TRIGGER IF EXISTS trace ON Player;
+  END IF;
+END;
+$$;
 CREATE OR REPLACE FUNCTION trig_trace() RETURNS trigger AS $$
 BEGIN
   INSERT INTO Log VALUES (
@@ -34,6 +45,16 @@ CREATE TRIGGER trace AFTER DELETE ON Player FOR EACH ROW
 EXECUTE FUNCTION trig_trace();
 
 -- Q6 (V1)
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.tables
+    WHERE table_schema = current_schema AND table_name = 'player'
+  ) THEN
+    DROP TRIGGER IF EXISTS trace ON Player;
+  END IF;
+END;
+$$;
 CREATE OR REPLACE FUNCTION trig_trace() RETURNS trigger AS $$
 BEGIN
   IF TG_OP = 'INSERT' THEN
@@ -63,6 +84,18 @@ FOR EACH ROW
 EXECUTE FUNCTION trig_trace();
 
 -- Q6 (V2)
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.tables
+    WHERE table_schema = current_schema AND table_name = 'player'
+  ) THEN
+    DROP TRIGGER IF EXISTS trace_update ON Player;
+    DROP TRIGGER IF EXISTS trace_delete ON Player;
+    DROP TRIGGER IF EXISTS trace_insert ON Player;
+  END IF;
+END;
+$$;
 CREATE OR REPLACE FUNCTION trig_trace_update() RETURNS trigger AS $$
 BEGIN
   INSERT INTO Log VALUES (
@@ -106,6 +139,7 @@ FOR EACH ROW
 EXECUTE FUNCTION trig_trace_insert();
 
 -- Q8
+DROP TABLE IF EXISTS BestScorer CASCADE;
 CREATE TABLE BestScorer (
   idGame char(8) REFERENCES Game,
   idPlayer varchar(10) REFERENCES Player,
@@ -114,6 +148,16 @@ CREATE TABLE BestScorer (
 );
 
 -- Q9
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.tables
+    WHERE table_schema = current_schema AND table_name = 'gamedetail'
+  ) THEN
+    DROP TRIGGER IF EXISTS best ON GameDetail;
+  END IF;
+END;
+$$;
 CREATE OR REPLACE FUNCTION trig_best() RETURNS trigger AS $$
 DECLARE
   val numeric;
@@ -133,6 +177,16 @@ CREATE TRIGGER best AFTER INSERT ON GameDetail FOR EACH ROW
 EXECUTE FUNCTION trig_best();
 
 -- Q13
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.tables
+    WHERE table_schema = current_schema AND table_name = 'gamedetail'
+  ) THEN
+    DROP TRIGGER IF EXISTS gamedetail ON GameDetail;
+  END IF;
+END;
+$$;
 CREATE OR REPLACE FUNCTION trig_gamedetail() RETURNS trigger AS $$
 DECLARE
   val numeric;
@@ -185,3 +239,5 @@ $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER gamedetail AFTER INSERT OR UPDATE ON GameDetail
 FOR EACH ROW EXECUTE FUNCTION trig_gamedetail();
+
+
